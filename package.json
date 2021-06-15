@@ -1,0 +1,20 @@
+{
+  "name": "graphql-music-database-api",
+  "version": "1.0.0",
+  "description": "https://www.sqlitetutorial.net/sqlite-sample-database/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikescolby/graphql-music-database-api.git"
+  },
+  "keywords": [],
+  "author": "Michael Colby <colby.michael@principal.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikescolby/graphql-music-database-api/issues"
+  },
+  "homepage": "https://github.com/mikescolby/graphql-music-database-api#readme"
+}
