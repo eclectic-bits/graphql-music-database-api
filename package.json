@@ -6,6 +6,8 @@
   "scripts": {
     "build": "tsc",
     "clean": "run-p clean:*",
+    "clean:dist": "rimraf dist/*",
+    "clean:modules": "rimraf node_modules/*",
     "lint": "",
     "start": "ts-node src/app.ts",
     "test": "",
