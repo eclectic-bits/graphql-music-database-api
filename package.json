@@ -4,7 +4,13 @@
   "description": "https://www.sqlitetutorial.net/sqlite-sample-database/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "clean": "run-p clean:*",
+    "lint": "",
+    "start": "ts-node src/app.ts",
+    "test": "",
+    "dev": "run-s lint test start",
+    "dev:watch": "nodemon --exec 'npm run dev'"
   },
   "repository": {
     "type": "git",
@@ -16,5 +22,14 @@
   "bugs": {
     "url": "https://github.com/mikescolby/graphql-music-database-api/issues"
   },
-  "homepage": "https://github.com/mikescolby/graphql-music-database-api#readme"
+  "homepage": "https://github.com/mikescolby/graphql-music-database-api#readme",
+  "devDependencies": {
+    "@types/node": "^15.12.2",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {}
 }
