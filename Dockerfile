@@ -34,7 +34,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 # copy code, and install production only dependencies
 COPY --from=build /app/package*.json ./
 RUN npm clean-install --production --silent
-COPY --from=build /app/build ./src
+COPY --from=build /app/dist ./src
 
 # run application using node
 CMD ["node", "./src/app.js"]
