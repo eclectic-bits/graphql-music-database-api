@@ -34,17 +34,20 @@ const bestPracticeRules = {
     'no-return-assign': [ 'error', 'always' ],
 
     // https://eslint.org/docs/rules/no-return-await
-    'no-return-await': 'error',
+    'no-return-await': [ 'error' ],
 
     // https://eslint.org/docs/rules/no-useless-concat
-    'no-useless-concat': 'error',
+    'no-useless-concat': [ 'error' ],
 
     // https://eslint.org/docs/rules/no-useless-return
-    'no-useless-return': 'error'
+    'no-useless-return': [ 'error' ]
 };
 
 // https://eslint.org/docs/rules/#variables
-const variableRules = {};
+const variableRules = {
+    // https://eslint.org/docs/rules/no-unused-vars
+    'no-unused-vars': [ 'error', { args: 'none' } ]
+};
 
 // https://eslint.org/docs/rules/#stylistic-issues
 const stylisticRules = {
@@ -58,7 +61,7 @@ const stylisticRules = {
     'array-element-newline': [ 'error', { multiline: true } ],
 
     // https://eslint.org/docs/rules/block-spacing
-    'block-spacing': 'error',
+    'block-spacing': [ 'error' ],
 
     // https://eslint.org/docs/rules/brace-style
     'brace-style': [ 'error', '1tbs' ],
