@@ -6,13 +6,14 @@
   "scripts": {
     "build": "tsc",
     "build:schema": "prisma generate",
+    "build:schema:watch": "nodemon --watch /prisma/schema.prisma --exec 'npm run build:schema'",
     "clean": "run-p clean:*",
     "clean:dist": "rimraf dist/*",
     "clean:modules": "rimraf node_modules/*",
     "lint": "eslint 'src/**/*.ts'",
     "start": "ts-node src/app.ts",
     "test": "",
-    "dev": "run-s lint test build:schema start",
+    "dev": "run-s lint test start",
     "dev:watch": "nodemon --exec 'npm run dev'"
   },
   "repository": {
