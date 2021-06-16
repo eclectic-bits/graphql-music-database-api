@@ -1,49 +1,54 @@
-import { Apple, Pear } from './fruit';
-import { Person } from './person';
+import { PrismaClient } from '@prisma/client';
 
-const test = 1234;
+const client = new PrismaClient();
 
-const array = [ 1, 2, 3 ];
-console.log(array);
+async function main() {
+    const artist = await client.artist.findUnique({
+        where: {
+            id: 1
+        },
+        include: {
+            albums: true
+        }
+    });
 
-if (test ===1234) {
-    console.log('something');
+    // console.log(artist);
+
+    const albumId = artist?.albums[0].id || 1;
+
+    const tracks = await client.track.findMany({
+        where: {
+            albumId: albumId
+        }
+    });
+    console.log(tracks);
+
+    const playlist = await client.playlist.findUnique({
+        where: {
+            id: 1
+        },
+        select: {
+            name: true,
+            PlaylistTrack: {
+                take: 2,
+                select: {
+                    track: {
+                        select: {
+                            name: true,
+                            milliseconds: true
+                        }
+                    }
+                }
+            }
+        }
+    });
+    console.log(playlist?.PlaylistTrack);
 }
 
-const person = new Person('Mike', 'Colby');
-console.log(person);
-
-console.log(new Apple('Apple'));
-console.log(new Pear('Pear'));
-
-// test
-console.log(test);
-
-function poop () {
-    const person = {
-        firstName: 'Mike',
-        lastName: 'Colby',
-        age: 32
-    };
-
-    console.log(person);
-
-    const test = `${ person.firstName } ${ person.lastName }`;
-
-    // test
-    console.log(`test ${ test }`);
-
-    // comment
-    console.log(1);
-
-    // comment
-    console.log(2);
-}
-
-poop();
-
-const blah = {
-    dog: 'woof',
-    '0x000': 1234
-};
-console.log(blah);
+main()
+    .catch((exception: any) => {
+        throw exception;
+    })
+    .finally(async () => {
+        await client.$disconnect();
+    });
