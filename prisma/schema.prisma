@@ -7,9 +7,82 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Genre {
-  genreId Int    @id @default(autoincrement())
-  name    String
+model Artist {
+  id   Int    @id @default(autoincrement()) @map("artistId")
+  name String
 
-  @@map(name: "Genres")
+  albums Album[]
+
+  @@map(name: "artists")
+}
+
+model Album {
+  id       Int    @id @default(autoincrement()) @map("albumId")
+  title    String
+  artistId Int
+
+  tracks Track[]
+
+  // relation fields
+  artist Artist @relation(fields: [artistId], references: [id])
+
+  @@map(name: "albums")
+}
+
+model Track {
+  id           Int    @id @default(autoincrement()) @map("trackId")
+  name         String
+  albumId      Int
+  mediaTypeId  Int
+  genreId      Int
+  composer     String
+  milliseconds Int
+  bytes        Int
+  unitPrice    Float
+
+  album     Album     @relation(fields: [albumId], references: [id])
+  mediaType MediaType @relation(fields: [mediaTypeId], references: [id])
+  genre     Genre     @relation(fields: [genreId], references: [id])
+
+  PlaylistTrack PlaylistTrack[]
+
+  @@map(name: "tracks")
+}
+
+model MediaType {
+  id   Int    @id @default(autoincrement()) @map("mediaTypeId")
+  name String
+
+  Track Track[]
+
+  @@map(name: "media_types")
+}
+
+model Genre {
+  id   Int    @id @default(autoincrement()) @map("genreId")
+  name String
+
+  Track Track[]
+
+  @@map(name: "genres")
+}
+
+model Playlist {
+  id   Int    @id @default(autoincrement()) @map("playlistId")
+  name String
+
+  PlaylistTrack PlaylistTrack[]
+
+  @@map(name: "playlists")
+}
+
+model PlaylistTrack {
+  playlistId Int
+  trackId    Int
+
+  playlist Playlist @relation(fields: [playlistId], references: [id])
+  track    Track    @relation(fields: [trackId], references: [id])
+
+  @@id([playlistId, trackId])
+  @@map(name: "playlist_track")
 }
