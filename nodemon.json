@@ -5,6 +5,7 @@
   "delay": 500,
   "watch": [
     "src/",
+    "prisma/schema.prisma",
     "package.json",
     "nodemon.json",
     ".eslintrc.js",
