@@ -1,54 +1,42 @@
+import { GraphQLServer } from 'graphql-yoga';
+
 import { PrismaClient } from '@prisma/client';
 
 const client = new PrismaClient();
 
-async function main() {
-    const artist = await client.artist.findUnique({
-        where: {
-            id: 1
-        },
-        include: {
-            albums: true
-        }
-    });
+// type definitions
+const typeDefs = `
+    type Query {
+        genres: [Genre!]!
+        mediaTypes: [MediaType!]!
+    }
 
-    // console.log(artist);
+    type Genre {
+        id: ID!
+        name: String!
+    }
 
-    const albumId = artist?.albums[0].id || 1;
+    type MediaType {
+        id: ID!
+        name: String!
+    }
+`;
 
-    const tracks = await client.track.findMany({
-        where: {
-            albumId: albumId
-        }
-    });
-    console.log(tracks);
+// resolvers
+const resolvers = { Query: {
+    genres() {
+        return client.genre.findMany();
+    },
+    mediaTypes() {
+        return client.mediaType.findMany();
+    }
+} };
 
-    const playlist = await client.playlist.findUnique({
-        where: {
-            id: 1
-        },
-        select: {
-            name: true,
-            PlaylistTrack: {
-                take: 2,
-                select: {
-                    track: {
-                        select: {
-                            name: true,
-                            milliseconds: true
-                        }
-                    }
-                }
-            }
-        }
-    });
-    console.log(playlist?.PlaylistTrack);
-}
+const server = new GraphQLServer({
+    typeDefs: typeDefs,
+    resolvers: resolvers
+});
 
-main()
-    .catch((exception: any) => {
-        throw exception;
-    })
-    .finally(async () => {
-        await client.$disconnect();
-    });
+server.start(() => {
+    console.log('The server is running on http://localhost:4000');
+});
