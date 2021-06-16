@@ -13,7 +13,7 @@
     "lint": "eslint 'src/**/*.ts'",
     "start": "ts-node src/app.ts",
     "test": "",
-    "dev": "run-s lint test start",
+    "dev": "run-s lint test build:schema start",
     "dev:watch": "nodemon --exec 'npm run dev'"
   },
   "repository": {
