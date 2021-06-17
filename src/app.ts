@@ -1,42 +1,29 @@
-import { GraphQLServer } from 'graphql-yoga';
+import { ConnectionOptions, createConnection } from 'typeorm';
 
-import { PrismaClient } from '@prisma/client';
+import { AlbumRepository, ArtistRepository } from './repositories';
 
-const client = new PrismaClient();
+async function main () {
+    const options: ConnectionOptions = {
+        type: 'sqlite',
+        database: 'data/chinook.sqlite',
+        entities: [ 'src/entities/*.ts' ],
+        logging: true
+    };
+    const connection = await createConnection(options);
 
-// type definitions
-const typeDefs = `
-    type Query {
-        genres: [Genre!]!
-        mediaTypes: [MediaType!]!
-    }
+    const artistId = 1;
 
-    type Genre {
-        id: ID!
-        name: String!
-    }
+    // artists
+    const artistRepository = new ArtistRepository();
+    const artist = await artistRepository.getArtist(artistId);
+    console.log(artist);
 
-    type MediaType {
-        id: ID!
-        name: String!
-    }
-`;
+    // albums
+    const albumRepository = new AlbumRepository();
+    const albums = await albumRepository.getAlbumsByArtistId(artistId);
+    console.log(albums);
 
-// resolvers
-const resolvers = { Query: {
-    genres() {
-        return client.genre.findMany();
-    },
-    mediaTypes() {
-        return client.mediaType.findMany();
-    }
-} };
+    connection.close();
+}
 
-const server = new GraphQLServer({
-    typeDefs: typeDefs,
-    resolvers: resolvers
-});
-
-server.start(() => {
-    console.log('The server is running on http://localhost:4000');
-});
+main().catch(console.error);

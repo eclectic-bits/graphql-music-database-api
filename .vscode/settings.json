@@ -1,10 +1,13 @@
 {
+  "files.eol": "\n",
+
   "eslint.format.enable": true,
   "eslint.validate": ["typescript", "javascript"],
 
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -16,11 +19,6 @@
 
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.formatOnSave": true
-  },
-
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma",
     "editor.formatOnSave": true
   }
 }
