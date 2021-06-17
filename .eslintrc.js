@@ -100,7 +100,7 @@ const stylisticRules = {
     'implicit-arrow-linebreak': [ 'error', 'beside' ],
 
     // https://eslint.org/docs/rules/indent
-    indent: [ 'error', 4 ],
+    indent: [ 'error', 4, { MemberExpression: 1 } ],
 
     // https://eslint.org/docs/rules/key-spacing
     'key-spacing': [
