@@ -293,7 +293,7 @@ const ecmaScriptRules = {
     'prefer-template': [ 'error' ],
 
     // https://eslint.org/docs/rules/sort-imports
-    'sort-imports': [ 'error' ],
+    'sort-imports': [ 'error', { ignoreDeclarationSort: true } ],
 
     // https://eslint.org/docs/rules/template-curly-spacing
     'template-curly-spacing': [ 'error', 'always' ]
