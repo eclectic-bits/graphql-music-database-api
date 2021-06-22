@@ -10,6 +10,6 @@ export class Track {
     @Column({ length: 200 })
     name: string;
 
-    @ManyToOne(() => Album, (album) => album.tracks)
+    @ManyToOne(() => Album, album => album.tracks)
     album: Album;
 }

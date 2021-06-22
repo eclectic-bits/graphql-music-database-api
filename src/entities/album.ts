@@ -12,9 +12,9 @@ export class Album {
     @Column({ length: 160 })
     title: string;
 
-    @ManyToOne(() => Artist, (artist) => artist.albums)
+    @ManyToOne(() => Artist, artist => artist.albums)
     artist: Artist;
 
-    @OneToMany(() => Track, (track) => track.album)
+    @OneToMany(() => Track, track => track.album)
     tracks: Track[];
 }

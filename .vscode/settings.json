@@ -1,6 +1,6 @@
 {
   "files.eol": "\n",
-
+  
   "eslint.format.enable": true,
   "eslint.validate": ["typescript", "javascript"],
 

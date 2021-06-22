@@ -266,7 +266,7 @@ const ecmaScriptRules = {
     'arrow-body-style': [ 'error', 'as-needed' ],
 
     // https://eslint.org/docs/rules/arrow-parens
-    'arrow-parens': [ 'error', 'always' ],
+    'arrow-parens': [ 'error', 'as-needed' ],
 
     // https://eslint.org/docs/rules/arrow-spacing
     'arrow-spacing': [ 'error', { before: true, after: true } ],
