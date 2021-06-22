@@ -1,41 +1,59 @@
 import 'reflect-metadata';
+import { ApolloServer } from 'apollo-server';
+import { buildSchema } from 'type-graphql';
 import { ConnectionOptions, createConnection } from 'typeorm';
 
+import { ArtistResolver } from './resolvers';
 import * as entities from './entities';
-import { AlbumRepository,
-    ArtistRepository,
-    TrackRepository } from './repositories';
 
-// eslint-disable-next-line max-statements
-async function main () {
+// // eslint-disable-next-line max-statements
+// async function main () {
+//     const options: ConnectionOptions = {
+//         type: 'sqlite',
+//         database: 'data/chinook.sqlite',
+//         entities: Object.values(entities),
+//         logging: true
+//     };
+//     const connection = await createConnection(options);
+
+//     const artistId = 1;
+
+//     // artists
+//     const artistRepository = new ArtistRepository();
+//     const artist = await artistRepository.getArtist(artistId);
+//     console.log(artist);
+
+//     connection.close();
+// }
+
+// main().catch(console.error);
+
+
+const PORT = process.env.PORT || 4000;
+
+async function bootstrap() {
     const options: ConnectionOptions = {
         type: 'sqlite',
         database: 'data/chinook.sqlite',
         entities: Object.values(entities),
         logging: true
     };
-    const connection = await createConnection(options);
+    await createConnection(options);
 
-    const artistId = 1;
+    // ... Building schema here
+    const schema = await buildSchema({
+        resolvers: [ ArtistResolver ]
+    });
 
-    // artists
-    const artistRepository = new ArtistRepository();
-    const artist = await artistRepository.getArtist(artistId);
-    console.log(artist);
+    // Create the GraphQL server
+    const server = new ApolloServer({
+        schema,
+        playground: true
+    });
 
-    // albums
-    const albumRepository = new AlbumRepository();
-    const albums = await albumRepository.getAlbumsByArtistId(artistId);
-    console.log(albums);
-
-    const albumId = 1;
-
-    // tracks
-    const trackRepository = new TrackRepository();
-    const tracks = await trackRepository.getTracksByAlbumId(albumId);
-    console.log(tracks);
-
-    connection.close();
+    // Start the server
+    const { url } = await server.listen(PORT);
+    console.log(`Server is running, GraphQL Playground available at ${ url }`);
 }
 
-main().catch(console.error);
+bootstrap();

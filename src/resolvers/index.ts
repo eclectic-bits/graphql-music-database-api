@@ -1,0 +1,1 @@
+export { ArtistResolver } from './artistResolver';

@@ -38,6 +38,7 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
+    "apollo-server": "^2.25.2",
     "class-validator": "^0.13.1",
     "graphql": "^15.5.0",
     "reflect-metadata": "^0.1.13",
