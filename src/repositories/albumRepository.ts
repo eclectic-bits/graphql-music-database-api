@@ -1,21 +1,14 @@
-import { Connection, getConnection } from 'typeorm';
-
+import { Repository } from './repository';
 import { Album } from '../entities';
 
-export class AlbumRepository {
-    private connection: Connection;
-
-    constructor() {
-        this.connection = getConnection();
-    }
-
+export class AlbumRepository extends Repository {
     public getAlbum = async (albumId: number) => {
-        const albums = await this.connection.getRepository(Album)
+        const album = await this.connection.getRepository(Album)
             .createQueryBuilder('album')
             .where('album.id = :id', { id: albumId })
             .getMany();
 
-        return albums;
+        return album;
     }
 
     public getAlbumsByArtistId = async (artistId: number) => {

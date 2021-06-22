@@ -1,7 +1,7 @@
 {
   "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2018",
     "module": "commonjs",
     "outDir": "./dist",
     "strict": true,

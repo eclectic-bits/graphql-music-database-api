@@ -1,12 +1,17 @@
+import 'reflect-metadata';
 import { ConnectionOptions, createConnection } from 'typeorm';
 
-import { AlbumRepository, ArtistRepository } from './repositories';
+import * as entities from './entities';
+import { AlbumRepository,
+    ArtistRepository,
+    TrackRepository } from './repositories';
 
+// eslint-disable-next-line max-statements
 async function main () {
     const options: ConnectionOptions = {
         type: 'sqlite',
         database: 'data/chinook.sqlite',
-        entities: [ 'src/entities/*.ts' ],
+        entities: Object.values(entities),
         logging: true
     };
     const connection = await createConnection(options);
@@ -22,6 +27,13 @@ async function main () {
     const albumRepository = new AlbumRepository();
     const albums = await albumRepository.getAlbumsByArtistId(artistId);
     console.log(albums);
+
+    const albumId = 1;
+
+    // tracks
+    const trackRepository = new TrackRepository();
+    const tracks = await trackRepository.getTracksByAlbumId(albumId);
+    console.log(tracks);
 
     connection.close();
 }
