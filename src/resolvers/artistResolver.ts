@@ -1,31 +1,30 @@
 import { Arg, FieldResolver, Query, Resolver, Root } from 'type-graphql';
+import { Connection, Repository, getConnection } from 'typeorm';
 
 import { Album, Artist } from '../entities';
-import { AlbumRepository, ArtistRepository } from '../repositories';
 
 @Resolver(Artist)
 export class ArtistResolver {
-    private artistRepository: ArtistRepository;
-    private albumRepository: AlbumRepository;
+    private artistRepository: Repository<Artist>;
+    private albumRepository: Repository<Album>;
 
-    constructor(artistRepository: ArtistRepository = new ArtistRepository(),
-        albumRepository: AlbumRepository = new AlbumRepository()) {
-        this.artistRepository = artistRepository;
-        this.albumRepository = albumRepository;
+    constructor(connection: Connection = getConnection()) {
+        this.artistRepository = connection.getRepository(Artist);
+        this.albumRepository = connection.getRepository(Album);
     }
 
     @Query(returns => Artist)
     async artist(@Arg('artistId') artistId: number): Promise<Artist|undefined> {
-        return this.artistRepository.getArtist(artistId);
+        return this.artistRepository.findOne({ id: artistId });
     }
 
     @Query(returns => [ Artist ])
     async artists(): Promise<Artist[]> {
-        return this.artistRepository.getArtists();
+        return this.artistRepository.find();
     }
 
     @FieldResolver()
     async albums(@Root() artist: Artist): Promise<Album[]> {
-        return this.albumRepository.getAlbumsByArtistId(artist.id);
+        return this.albumRepository.find({ artistId: artist.id });
     }
 }
