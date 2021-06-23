@@ -15,4 +15,9 @@ export class AlbumResolver {
     async album(@Arg('albumId') albumId: number) {
         return this.albumRepository.getAlbum(albumId);
     }
+
+    @Query(returns => [ Album ])
+    async albums(@Arg('artistId') artistId: number) {
+        return this.albumRepository.getAlbumsByArtistId(artistId);
+    }
 }

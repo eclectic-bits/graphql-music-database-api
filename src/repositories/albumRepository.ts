@@ -10,4 +10,13 @@ export class AlbumRepository extends Repository {
 
         return album;
     }
+
+    public getAlbumsByArtistId = async (artistId: number) => {
+        const albums = await this.connection.getRepository(Album)
+            .createQueryBuilder('album')
+            .where('album.artistId = :artistId', { artistId: artistId })
+            .getMany();
+
+        return albums;
+    }
 }
