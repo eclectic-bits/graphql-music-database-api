@@ -15,6 +15,7 @@ export class Album {
     title: string;
 
     @Column()
+    @Field()
     artistId: number;
 
     @Field(type => Artist)
