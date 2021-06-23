@@ -262,9 +262,6 @@ const stylisticRules = {
 
 // https://eslint.org/docs/rules/#ecmascript-6
 const ecmaScriptRules = {
-    // https://eslint.org/docs/rules/arrow-body-style
-    'arrow-body-style': [ 'error', 'as-needed' ],
-
     // https://eslint.org/docs/rules/arrow-parens
     'arrow-parens': [ 'error', 'as-needed' ],
 
