@@ -52,13 +52,13 @@ const variableRules = {
 // https://eslint.org/docs/rules/#stylistic-issues
 const stylisticRules = {
     // https://eslint.org/docs/rules/array-bracket-newline
-    'array-bracket-newline': [ 'error', { multiline: true } ],
+    'array-bracket-newline': [ 'error', 'consistent' ],
 
     // https://eslint.org/docs/rules/array-bracket-spacing
     'array-bracket-spacing': [ 'error', 'always' ],
 
     // https://eslint.org/docs/rules/array-element-newline
-    'array-element-newline': [ 'error', { multiline: true } ],
+    'array-element-newline': [ 'error', 'consistent' ],
 
     // https://eslint.org/docs/rules/block-spacing
     'block-spacing': [ 'error' ],
