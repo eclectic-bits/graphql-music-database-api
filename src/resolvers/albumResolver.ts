@@ -1,8 +1,10 @@
 import { Arg, FieldResolver, Query, Resolver, Root } from 'type-graphql';
+import { Service } from 'typedi';
 import { Connection, Repository, getConnection } from 'typeorm';
 
 import { Album, Artist } from '../entities';
 
+@Service()
 @Resolver(Album)
 export class AlbumResolver {
     private artistRepository: Repository<Artist>;
