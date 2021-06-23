@@ -11,4 +11,7 @@ export class Album {
     @Column({ length: 160 })
     @Field()
     title: string;
+
+    @Column()
+    artistId: number;
 }
