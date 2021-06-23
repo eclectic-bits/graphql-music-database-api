@@ -15,4 +15,9 @@ export class ArtistResolver {
     async artist(@Arg('artistId') artistId: number) {
         return this.artistRepository.getArtist(artistId);
     }
+
+    @Query(returns => [ Artist ])
+    async artists() {
+        return this.artistRepository.getArtists();
+    }
 }
