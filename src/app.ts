@@ -3,31 +3,8 @@ import { ApolloServer } from 'apollo-server';
 import { buildSchema } from 'type-graphql';
 import { ConnectionOptions, createConnection } from 'typeorm';
 
-import { ArtistResolver } from './resolvers';
+import { AlbumResolver, ArtistResolver } from './resolvers';
 import * as entities from './entities';
-
-// // eslint-disable-next-line max-statements
-// async function main () {
-//     const options: ConnectionOptions = {
-//         type: 'sqlite',
-//         database: 'data/chinook.sqlite',
-//         entities: Object.values(entities),
-//         logging: true
-//     };
-//     const connection = await createConnection(options);
-
-//     const artistId = 1;
-
-//     // artists
-//     const artistRepository = new ArtistRepository();
-//     const artist = await artistRepository.getArtist(artistId);
-//     console.log(artist);
-
-//     connection.close();
-// }
-
-// main().catch(console.error);
-
 
 const PORT = process.env.PORT || 4000;
 
@@ -42,7 +19,7 @@ async function bootstrap() {
 
     // ... Building schema here
     const schema = await buildSchema({
-        resolvers: [ ArtistResolver ]
+        resolvers: [ AlbumResolver, ArtistResolver ]
     });
 
     // Create the GraphQL server

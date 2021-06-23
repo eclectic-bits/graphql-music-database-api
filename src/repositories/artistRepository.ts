@@ -10,12 +10,4 @@ export class ArtistRepository extends Repository {
 
         return artist;
     }
-
-    public getArtists = async () => {
-        const artists = await this.connection.getRepository(Artist)
-            .createQueryBuilder('artist')
-            .getMany();
-
-        return artists;
-    }
 }
