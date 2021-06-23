@@ -2,21 +2,13 @@ import { Repository } from './repository';
 import { Album } from '../entities';
 
 export class AlbumRepository extends Repository {
-    public getAlbum = async (albumId: number) => {
-        const album = await this.connection.getRepository(Album)
-            .createQueryBuilder('album')
-            .where('album.id = :id', { id: albumId })
-            .getOne();
-
-        return album;
+    public getAlbum = async (albumId: number): Promise<Album|undefined> => {
+        return this.connection.getRepository(Album).findOne({ id: albumId });
     }
 
-    public getAlbumsByArtistId = async (artistId: number) => {
-        const albums = await this.connection.getRepository(Album)
-            .createQueryBuilder('album')
-            .where('album.artistId = :artistId', { artistId: artistId })
-            .getMany();
-
-        return albums;
+    public getAlbumsByArtistId = async (artistId: number): Promise<Album[]> => {
+        return this.connection.getRepository(Album).find({
+            artistId: artistId
+        });
     }
 }

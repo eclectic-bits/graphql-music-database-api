@@ -1,6 +1,8 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+import { Artist } from './artist';
+
 @Entity({ name: 'albums' })
 @ObjectType()
 export class Album {
@@ -14,4 +16,7 @@ export class Album {
 
     @Column()
     artistId: number;
+
+    @Field(type => Artist)
+    artist: Artist;
 }
