@@ -2,7 +2,7 @@
   "verbose": false,
   "ext": "ts",
   "exclude": ["dist/*", "node_modules/*"],
-  "delay": 500,
+  "delay": 2000,
   "watch": [
     "src/",
     "package.json",

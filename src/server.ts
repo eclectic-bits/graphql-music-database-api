@@ -1,52 +1,26 @@
 import { ApolloServer } from 'apollo-server';
 import { buildSchema } from 'type-graphql';
-import { Container } from 'inversify';
-import {
-    Connection,
-    ConnectionOptions,
-    createConnection,
-    getConnection
-} from 'typeorm';
 
-import * as entities from './entities';
+import { DatabaseContext } from './contexts';
 import { AlbumResolver, ArtistResolver } from './resolvers';
 
 export class Server {
-    constructor() {
-        this.registerDependencies();
-    }
-
-    /**
-     *  Register Dependencies with IOC Container
-     */
-    private registerDependencies = async () => {
-        const options: ConnectionOptions = {
-            type: 'sqlite',
-            database: 'data/chinook.sqlite',
-            entities: Object.values(entities),
-            logging: true
-        };
-        await createConnection(options);
-
-        // register database connection
-        // Container.set(Connection, getConnection());
-    }
-
     /**
      *  Start Server
      */
     public start = async (port: number|string) => {
+        // initialize database connection
+        DatabaseContext.initializeDatabaseConnection();
+
         // ... build graphql schema
         const schema = await buildSchema({
-            resolvers: [ AlbumResolver, ArtistResolver ],
-            container: Container
+            resolvers: [ AlbumResolver, ArtistResolver ]
         });
 
         // Create the GraphQL server
         const server = new ApolloServer({
             schema,
-            playground: true,
-            tracing: true
+            playground: true
         });
 
         // Start the server

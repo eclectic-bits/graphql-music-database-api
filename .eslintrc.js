@@ -22,7 +22,7 @@ const bestPracticeRules = {
     'no-else-return': [ 'error' ],
 
     // https://eslint.org/docs/rules/no-empty-function
-    'no-empty-function': [ 'error' ],
+    'no-empty-function': [ 'error', { allow: [ 'constructors' ] } ],
 
     // https://eslint.org/docs/rules/no-invalid-this
     // "no-invalid-this": ["error"],
@@ -270,9 +270,6 @@ const ecmaScriptRules = {
 
     // https://eslint.org/docs/rules/no-duplicate-imports
     'no-duplicate-imports': [ 'error', { includeExports: true } ],
-
-    // https://eslint.org/docs/rules/no-useless-constructor
-    'no-useless-constructor': [ 'error' ],
 
     // https://eslint.org/docs/rules/no-var
     'no-var': [ 'error' ],

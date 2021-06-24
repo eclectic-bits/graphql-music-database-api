@@ -1,25 +1,18 @@
-import { Arg, FieldResolver, Query,
-    Resolver, ResolverInterface, Root } from 'type-graphql';
-import { Service } from 'typedi';
-import { Connection, Repository } from 'typeorm';
+import { Arg, FieldResolver, Query, Resolver,
+    ResolverInterface, Root } from 'type-graphql';
 
 import { Album, Artist } from '../entities';
-import { ArtistService } from '../interfaces';
+import { AlbumService, ArtistService } from '../interfaces';
+import { SqliteAlbumService, SqliteArtistService } from '../services';
 
-@Service()
 @Resolver(Artist)
 export class ArtistResolver implements ResolverInterface<Artist> {
-    private artistRepository: Repository<Artist>;
-    private albumRepository: Repository<Album>;
+    constructor(private artistService: ArtistService = new SqliteArtistService(),
+                private albumService: AlbumService = new SqliteAlbumService()) { }
 
-    private artistService: ArtistService;
-
-    constructor(connection: Connection,
-        artistService: ArtistService) {
-        this.artistRepository = connection.getRepository(Artist);
-        this.albumRepository = connection.getRepository(Album);
-
-        this.artistService = artistService;
+    @Query(returns => [ Artist ])
+    async artists(): Promise<Artist[]> {
+        return this.artistService.getArtists();
     }
 
     @Query(returns => Artist)
@@ -27,13 +20,8 @@ export class ArtistResolver implements ResolverInterface<Artist> {
         return this.artistService.getArtist(artistId);
     }
 
-    @Query(returns => [ Artist ])
-    async artists(): Promise<Artist[]> {
-        return this.artistRepository.find();
-    }
-
     @FieldResolver()
     async albums(@Root() artist: Artist): Promise<Album[]> {
-        return this.albumRepository.find({ artistId: artist.id });
+        return this.albumService.getAlbumsByArtistId(artist.id);
     }
 }
