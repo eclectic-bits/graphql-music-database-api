@@ -3,6 +3,7 @@ import { buildSchema } from 'type-graphql';
 
 import { DatabaseContext } from './contexts';
 import { AlbumResolver, ArtistResolver, TrackResolver } from './resolvers';
+import { GenreResolver } from './resolvers/genreResolver';
 
 export class Server {
     /**
@@ -14,7 +15,7 @@ export class Server {
 
         // ... build graphql schema
         const schema = await buildSchema({
-            resolvers: [ AlbumResolver, ArtistResolver, TrackResolver ]
+            resolvers: [ AlbumResolver, ArtistResolver, GenreResolver, TrackResolver ]
         });
 
         // Create the GraphQL server

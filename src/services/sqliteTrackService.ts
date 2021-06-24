@@ -4,7 +4,7 @@ import { Track } from '../entities';
 import { TrackService } from '../interfaces';
 
 export class SqliteTrackService implements TrackService {
-    repository: Repository<Track>;
+    private repository: Repository<Track>;
 
     constructor(connection: Connection = getConnection()) {
         this.repository = connection.getRepository(Track);

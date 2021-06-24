@@ -13,4 +13,8 @@ export class SqliteGenreService implements GenreService {
     public getGenre = async (genreId: number): Promise<Genre|undefined> => {
         return this.repository.findOne({ id: genreId });
     }
+
+    public getGenres = async (): Promise<Genre[]> => {
+        return this.repository.find();
+    }
 }

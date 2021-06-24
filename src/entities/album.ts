@@ -9,21 +9,21 @@ import { Track } from './track';
 export class Album {
     @PrimaryGeneratedColumn({ name: 'albumId' })
     @Field(type => ID)
-    id: number;
+    public id: number;
 
     @Column({ length: 160 })
     @Field()
-    title: string;
+    public title: string;
 
     @Column()
     @Field()
-    artistId: number;
+    public artistId: number;
 
     @ManyToOne(() => Artist, artist => artist.albums)
     @Field(type => Artist)
-    artist: Artist;
+    public artist: Artist;
 
     @OneToMany(() => Track, track => track.album)
     @Field(type => [ Track ])
-    tracks: Track[];
+    public tracks: Track[];
 }
