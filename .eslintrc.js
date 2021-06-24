@@ -318,9 +318,10 @@ const typescriptEslintRules = {
     '@typescript-eslint/member-delimiter-style': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/member-ordering.md
-    '@typescript-eslint/member-ordering': [
-        'error'
-    ]
+    '@typescript-eslint/member-ordering': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/method-signature-style.md
+    '@typescript-eslint/method-signature-style': [ 'error', 'method' ]
 };
 
 module.exports = {
