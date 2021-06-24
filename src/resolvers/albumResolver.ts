@@ -1,16 +1,17 @@
-import { Arg, FieldResolver, Query, Resolver, Root } from 'type-graphql';
+import { Arg, FieldResolver, Query,
+    Resolver, ResolverInterface, Root } from 'type-graphql';
 import { Service } from 'typedi';
-import { Connection, Repository, getConnection } from 'typeorm';
+import { Connection, Repository } from 'typeorm';
 
 import { Album, Artist } from '../entities';
 
 @Service()
 @Resolver(Album)
-export class AlbumResolver {
+export class AlbumResolver implements ResolverInterface<Album> {
     private artistRepository: Repository<Artist>;
     private albumRepository: Repository<Album>;
 
-    constructor(connection: Connection = getConnection()) {
+    constructor(connection: Connection) {
         this.artistRepository = connection.getRepository(Artist);
         this.albumRepository = connection.getRepository(Album);
     }
@@ -26,7 +27,12 @@ export class AlbumResolver {
     }
 
     @FieldResolver()
-    async artist(@Root() album: Album): Promise<Artist|undefined> {
-        return this.artistRepository.findOne({ id: album.artistId });
+    async artist(@Root() album: Album): Promise<Artist> {
+        const artist = await this.artistRepository.findOne({ id: album.artistId });
+        if (artist === undefined) {
+            throw new Error();
+        }
+
+        return artist;
     }
 }

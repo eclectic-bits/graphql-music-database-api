@@ -149,7 +149,7 @@ const stylisticRules = {
     'max-depth': [ 'error', { max: 4 } ],
 
     // https://eslint.org/docs/rules/max-len
-    'max-len': [ 'error' ],
+    'max-len': [ 'error', { code: 90 } ],
 
     // https://eslint.org/docs/rules/max-lines
     'max-lines': [

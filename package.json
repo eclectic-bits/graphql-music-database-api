@@ -2,7 +2,7 @@
   "name": "graphql-music-database-api",
   "version": "1.0.0",
   "description": "https://www.sqlitetutorial.net/sqlite-sample-database/",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "tsc",
     "clean": "run-p clean:*",
@@ -10,7 +10,7 @@
     "clean:modules": "rimraf node_modules/*",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint 'src/**/*.ts' --fix",
-    "start": "ts-node src/app.ts",
+    "start": "ts-node src/index.ts",
     "test": "",
     "dev": "run-s lint test start",
     "dev:watch": "nodemon --exec 'npm run dev'"
@@ -41,6 +41,7 @@
     "apollo-server": "^2.25.2",
     "class-validator": "^0.13.1",
     "graphql": "^15.5.0",
+    "inversify": "^5.1.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
     "type-graphql": "^1.1.1",
