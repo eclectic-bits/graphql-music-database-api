@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from 'type-graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Artist } from './artist';
 
@@ -18,6 +18,7 @@ export class Album {
     @Field()
     artistId: number;
 
+    @ManyToOne(() => Artist, artist => artist.albums)
     @Field(type => Artist)
     artist: Artist;
 }
