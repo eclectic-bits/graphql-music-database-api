@@ -316,6 +316,10 @@ const typescriptEslintRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/member-delimiter-style.md
     '@typescript-eslint/member-delimiter-style': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/member-ordering.md
+    '@typescript-eslint/member-ordering': [
+        'error'
     ]
 };
 
