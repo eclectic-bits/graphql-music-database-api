@@ -1,42 +1,48 @@
-// import { Field, ID, ObjectType } from 'type-graphql';
-// import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Field, ID, ObjectType } from 'type-graphql';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-// @Entity({ name: 'tracks' })
-// @ObjectType()
-// export class Track {
-//     @PrimaryGeneratedColumn({ name: 'trackId' })
-//     @Field(type => ID)
-//     id: number;
+import { Album } from './album';
 
-//     @Column({ length: 200 })
-//     @Field()
-//     name: string;
+@Entity({ name: 'tracks' })
+@ObjectType()
+export class Track {
+    @PrimaryGeneratedColumn({ name: 'trackId' })
+    @Field(type => ID)
+    id: number;
 
-//     @Column()
-//     @Field()
-//     albumId: number;
+    @Column({ length: 200 })
+    @Field()
+    name: string;
 
-//     @Column()
-//     @Field()
-//     mediaTypeId: number;
+    @Column()
+    @Field()
+    albumId: number;
 
-//     @Column()
-//     @Field()
-//     genreId: number;
+    @ManyToOne(() => Album, album => album.tracks)
+    @Field(type => Album)
+    album: Album;
 
-//     @Column({ length: 220 })
-//     @Field()
-//     composer: string;
+    @Column()
+    @Field()
+    mediaTypeId: number;
 
-//     @Column()
-//     @Field()
-//     milliseconds: number;
+    @Column()
+    @Field()
+    genreId: number;
 
-//     @Column()
-//     @Field()
-//     bytes: number;
+    @Column({ length: 220 })
+    @Field()
+    composer: string;
 
-//     @Column()
-//     @Field()
-//     unitPrice: number;
-// }
+    @Column()
+    @Field()
+    milliseconds: number;
+
+    @Column()
+    @Field()
+    bytes: number;
+
+    @Column()
+    @Field()
+    unitPrice: number;
+}

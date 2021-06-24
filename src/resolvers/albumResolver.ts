@@ -1,14 +1,15 @@
 import { Arg, FieldResolver, Query,
     Resolver, ResolverInterface, Root } from 'type-graphql';
 
-import { Album, Artist } from '../entities';
-import { AlbumService, ArtistService } from '../interfaces';
-import { SqliteAlbumService, SqliteArtistService } from '../services';
+import { Album, Artist, Track } from '../entities';
+import { AlbumService, ArtistService, TrackService } from '../interfaces';
+import { SqliteAlbumService, SqliteArtistService, SqliteTrackService } from '../services';
 
 @Resolver(Album)
 export class AlbumResolver implements ResolverInterface<Album> {
     constructor(private artistService: ArtistService = new SqliteArtistService(),
-                private albumService: AlbumService = new SqliteAlbumService()) { }
+                private albumService: AlbumService = new SqliteAlbumService(),
+                private trackService: TrackService = new SqliteTrackService()) { }
 
     @Query(returns => Album)
     async album(@Arg('albumId') albumId: number): Promise<Album|undefined> {
@@ -28,5 +29,10 @@ export class AlbumResolver implements ResolverInterface<Album> {
         }
 
         return artist;
+    }
+
+    @FieldResolver()
+    async tracks(@Root() album: Album): Promise<Track[]> {
+        return this.trackService.getTracksByAlbumId(album.id);
     }
 }

@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server';
 import { buildSchema } from 'type-graphql';
 
 import { DatabaseContext } from './contexts';
-import { AlbumResolver, ArtistResolver } from './resolvers';
+import { AlbumResolver, ArtistResolver, TrackResolver } from './resolvers';
 
 export class Server {
     /**
@@ -14,7 +14,7 @@ export class Server {
 
         // ... build graphql schema
         const schema = await buildSchema({
-            resolvers: [ AlbumResolver, ArtistResolver ]
+            resolvers: [ AlbumResolver, ArtistResolver, TrackResolver ]
         });
 
         // Create the GraphQL server
