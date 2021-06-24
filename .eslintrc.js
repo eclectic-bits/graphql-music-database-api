@@ -334,6 +334,9 @@ const typescriptEslintRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implicit-any-catch.md
     '@typescript-eslint/no-implicit-any-catch': [ 'error', { allowExplicitAny: true} ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-inferrable-types.md
+    '@typescript-eslint/no-inferrable-types': [ 'error' ]
 };
 
 module.exports = {
