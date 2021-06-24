@@ -2,6 +2,7 @@ import { Field, ID, ObjectType } from 'type-graphql';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Album } from './album';
+import { Genre } from './genre';
 
 @Entity({ name: 'tracks' })
 @ObjectType()
@@ -29,6 +30,10 @@ export class Track {
     @Column()
     @Field()
     genreId: number;
+
+    @ManyToOne(() => Genre, genre => genre.tracks)
+    @Field(type => Genre)
+    genre: Genre;
 
     @Column({ length: 220 })
     @Field()
