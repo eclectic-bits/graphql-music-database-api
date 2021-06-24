@@ -1,14 +1,15 @@
 import { Arg, FieldResolver, Query,
     Resolver, ResolverInterface, Root } from 'type-graphql';
 
-import { Album, Track } from '../entities';
-import { AlbumService, TrackService } from '../interfaces';
-import { SqliteAlbumService, SqliteTrackService } from '../services';
+import { Album, Genre, Track } from '../entities';
+import { AlbumService, GenreService, TrackService } from '../interfaces';
+import { SqliteAlbumService, SqliteGenreService, SqliteTrackService } from '../services';
 
 @Resolver(Track)
 export class TrackResolver implements ResolverInterface<Track> {
     constructor(private trackService: TrackService = new SqliteTrackService(),
-                private albumService: AlbumService = new SqliteAlbumService()) { }
+                private albumService: AlbumService = new SqliteAlbumService(),
+                private genreService: GenreService = new SqliteGenreService()) { }
 
     @Query(returns => Track)
     async track(@Arg('trackId') trackId: number): Promise<Track|undefined> {
@@ -28,5 +29,15 @@ export class TrackResolver implements ResolverInterface<Track> {
         }
 
         return album;
+    }
+
+    @FieldResolver()
+    async genre(@Root() track: Track): Promise<Genre> {
+        const genre = await this.genreService.getGenre(track.genreId);
+        if (genre === undefined) {
+            throw new Error(`A genre wasn't associated with trackId: ${ track.id }`);
+        }
+
+        return genre;
     }
 }
