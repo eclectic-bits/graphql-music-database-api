@@ -11,7 +11,7 @@ export class Server {
      */
     public start = async (port: number|string) => {
         // initialize database connection
-        DatabaseContext.initializeDatabaseConnection();
+        await DatabaseContext.initializeDatabaseConnection();
 
         // ... build graphql schema
         const schema = await buildSchema({

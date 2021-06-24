@@ -328,6 +328,9 @@ const typescriptEslintRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-interface.md
     '@typescript-eslint/no-empty-interface': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-floating-promises.md
+    '@typescript-eslint/no-floating-promises': [ 'error' ]
 };
 
 module.exports = {
