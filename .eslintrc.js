@@ -321,7 +321,10 @@ const typescriptEslintRules = {
     '@typescript-eslint/member-ordering': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/method-signature-style.md
-    '@typescript-eslint/method-signature-style': [ 'error', 'method' ]
+    '@typescript-eslint/method-signature-style': [ 'error', 'method' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-confusing-void-expression.md
+    '@typescript-eslint/no-confusing-void-expression': [ 'error' ]
 };
 
 module.exports = {
@@ -346,9 +349,10 @@ module.exports = {
    *  Parser Options
    */
     parserOptions: {
-
         // Allows for the use of imports
-        sourceType: 'module'
+        sourceType: 'module',
+
+        project: './tsconfig.json'
     },
 
     plugins: [ '@typescript-eslint' ],
