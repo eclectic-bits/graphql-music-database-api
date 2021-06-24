@@ -293,6 +293,16 @@ const ecmaScriptRules = {
     'template-curly-spacing': [ 'error', 'always' ]
 };
 
+const typescriptEslintRules = {
+    '@typescript-eslint/type-annotation-spacing': [
+        'error',
+        {
+            before: false,
+            after: true
+        }
+    ]
+};
+
 module.exports = {
     root: true,
 
@@ -335,6 +345,7 @@ module.exports = {
         ...bestPracticeRules,
         ...variableRules,
         ...stylisticRules,
-        ...ecmaScriptRules
+        ...ecmaScriptRules,
+        ...typescriptEslintRules
     }
 };
