@@ -12,17 +12,17 @@ export class TrackResolver implements ResolverInterface<Track> {
                 private genreService: GenreService = new SqliteGenreService()) { }
 
     @Query(returns => Track)
-    async track(@Arg('trackId') trackId: number): Promise<Track|undefined> {
+    public async track(@Arg('trackId') trackId: number): Promise<Track|undefined> {
         return this.trackService.getTrack(trackId);
     }
 
     @Query(returns => [ Track ])
-    async tracks(@Arg('albumId') albumId: number): Promise<Track[]> {
+    public async tracks(@Arg('albumId') albumId: number): Promise<Track[]> {
         return this.trackService.getTracksByAlbumId(albumId);
     }
 
     @FieldResolver()
-    async album(@Root() track: Track): Promise<Album> {
+    public async album(@Root() track: Track): Promise<Album> {
         const album = await this.albumService.getAlbum(track.albumId);
         if (album === undefined) {
             throw new Error(`An album wasn't associated with trackId: ${ track.id }`);
@@ -32,7 +32,7 @@ export class TrackResolver implements ResolverInterface<Track> {
     }
 
     @FieldResolver()
-    async genre(@Root() track: Track): Promise<Genre> {
+    public async genre(@Root() track: Track): Promise<Genre> {
         const genre = await this.genreService.getGenre(track.genreId);
         if (genre === undefined) {
             throw new Error(`A genre wasn't associated with trackId: ${ track.id }`);

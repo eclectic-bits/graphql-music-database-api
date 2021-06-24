@@ -9,6 +9,7 @@
     "clean:dist": "rimraf dist/*",
     "clean:modules": "rimraf node_modules/*",
     "lint": "eslint 'src/**/*.ts'",
+    "lint:watch": "nodemon --exec 'npm run lint'",
     "lint:fix": "eslint 'src/**/*.ts' --fix",
     "start": "ts-node src/index.ts",
     "test": "",

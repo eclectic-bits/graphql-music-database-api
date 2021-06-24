@@ -294,11 +294,23 @@ const ecmaScriptRules = {
 };
 
 const typescriptEslintRules = {
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
     '@typescript-eslint/type-annotation-spacing': [
         'error',
         {
             before: false,
             after: true
+        }
+    ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-member-accessibility.md
+    '@typescript-eslint/explicit-member-accessibility': [
+        'error',
+        {
+            accessibility: 'explicit',
+            overrides: {
+                constructors: 'off'
+            }
         }
     ]
 };
@@ -345,7 +357,16 @@ module.exports = {
         ...bestPracticeRules,
         ...variableRules,
         ...stylisticRules,
-        ...ecmaScriptRules,
-        ...typescriptEslintRules
-    }
+        ...ecmaScriptRules
+    },
+
+    overrides: [
+        {
+            // enable the rule specifically for TypeScript files
+            files: [ '*.ts' ],
+            rules: {
+                ...typescriptEslintRules
+            }
+        }
+    ]
 };

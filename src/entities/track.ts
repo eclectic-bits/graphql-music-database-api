@@ -9,45 +9,45 @@ import { Genre } from './genre';
 export class Track {
     @PrimaryGeneratedColumn({ name: 'trackId' })
     @Field(type => ID)
-    id: number;
+    public id: number;
 
     @Column({ length: 200 })
     @Field()
-    name: string;
+    public name: string;
 
     @Column()
     @Field()
-    albumId: number;
+    public albumId: number;
 
     @ManyToOne(() => Album, album => album.tracks)
     @Field(type => Album)
-    album: Album;
+    public album: Album;
 
     @Column()
     @Field()
-    mediaTypeId: number;
+    public mediaTypeId: number;
 
     @Column()
     @Field()
-    genreId: number;
+    public genreId: number;
 
     @ManyToOne(() => Genre, genre => genre.tracks)
     @Field(type => Genre)
-    genre: Genre;
+    public genre: Genre;
 
     @Column({ length: 220 })
     @Field()
-    composer: string;
+    public composer: string;
 
     @Column()
     @Field()
-    milliseconds: number;
+    public milliseconds: number;
 
     @Column()
     @Field()
-    bytes: number;
+    public bytes: number;
 
     @Column()
     @Field()
-    unitPrice: number;
+    public unitPrice: number;
 }

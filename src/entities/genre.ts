@@ -8,12 +8,12 @@ import { Track } from './track';
 export class Genre {
     @PrimaryGeneratedColumn({ name: 'genreId' })
     @Field(type => ID)
-    id: number;
+    public id: number;
 
     @Column({ length: 120 })
     @Field()
-    name: string;
+    public name: string;
 
     @OneToMany(() => Track, track => track.genre)
-    tracks: Track[];
+    public tracks: Track[];
 }

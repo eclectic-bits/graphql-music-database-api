@@ -9,12 +9,12 @@ export class GenreResolver {
     constructor(private genreService: GenreService = new SqliteGenreService()) { }
 
     @Query(returns => Genre)
-    async genre(@Arg('genreId') genreId: number): Promise<Genre|undefined> {
+    public async genre(@Arg('genreId') genreId: number): Promise<Genre|undefined> {
         return this.genreService.getGenre(genreId);
     }
 
     @Query(returns => [ Genre ])
-    async genres(): Promise<Genre[]> {
+    public async genres(): Promise<Genre[]> {
         return this.genreService.getGenres();
     }
 }

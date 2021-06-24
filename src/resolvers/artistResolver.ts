@@ -11,17 +11,17 @@ export class ArtistResolver implements ResolverInterface<Artist> {
                 private albumService: AlbumService = new SqliteAlbumService()) { }
 
     @Query(returns => [ Artist ])
-    async artists(): Promise<Artist[]> {
+    public async artists(): Promise<Artist[]> {
         return this.artistService.getArtists();
     }
 
     @Query(returns => Artist)
-    async artist(@Arg('artistId') artistId: number): Promise<Artist|undefined> {
+    public async artist(@Arg('artistId') artistId: number): Promise<Artist|undefined> {
         return this.artistService.getArtist(artistId);
     }
 
     @FieldResolver()
-    async albums(@Root() artist: Artist): Promise<Album[]> {
+    public async albums(@Root() artist: Artist): Promise<Album[]> {
         return this.albumService.getAlbumsByArtistId(artist.id);
     }
 }

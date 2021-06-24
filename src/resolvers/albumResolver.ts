@@ -12,17 +12,17 @@ export class AlbumResolver implements ResolverInterface<Album> {
                 private trackService: TrackService = new SqliteTrackService()) { }
 
     @Query(returns => Album)
-    async album(@Arg('albumId') albumId: number): Promise<Album|undefined> {
+    public async album(@Arg('albumId') albumId: number): Promise<Album|undefined> {
         return this.albumService.getAlbum(albumId);
     }
 
     @Query(returns => [ Album ])
-    async albums(@Arg('artistId') artistId: number): Promise<Album[]> {
+    public async albums(@Arg('artistId') artistId: number): Promise<Album[]> {
         return this.albumService.getAlbumsByArtistId(artistId);
     }
 
     @FieldResolver()
-    async artist(@Root() album: Album): Promise<Artist> {
+    public async artist(@Root() album: Album): Promise<Artist> {
         const artist = await this.artistService.getArtist(album.artistId);
         if (artist === undefined) {
             throw new Error(`An artist wasn't associated with albumId: ${ album.id }`);
@@ -32,7 +32,7 @@ export class AlbumResolver implements ResolverInterface<Album> {
     }
 
     @FieldResolver()
-    async tracks(@Root() album: Album): Promise<Track[]> {
+    public async tracks(@Root() album: Album): Promise<Track[]> {
         return this.trackService.getTracksByAlbumId(album.id);
     }
 }
