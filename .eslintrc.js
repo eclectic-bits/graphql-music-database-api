@@ -324,7 +324,10 @@ const typescriptEslintRules = {
     '@typescript-eslint/method-signature-style': [ 'error', 'method' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-confusing-void-expression.md
-    '@typescript-eslint/no-confusing-void-expression': [ 'error' ]
+    '@typescript-eslint/no-confusing-void-expression': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-interface.md
+    '@typescript-eslint/no-empty-interface': [ 'error' ],
 };
 
 module.exports = {
