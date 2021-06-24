@@ -330,7 +330,10 @@ const typescriptEslintRules = {
     '@typescript-eslint/no-empty-interface': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-floating-promises.md
-    '@typescript-eslint/no-floating-promises': [ 'error' ]
+    '@typescript-eslint/no-floating-promises': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implicit-any-catch.md
+    '@typescript-eslint/no-implicit-any-catch': [ 'error', { allowExplicitAny: true} ],
 };
 
 module.exports = {
