@@ -312,6 +312,10 @@ const typescriptEslintRules = {
                 constructors: 'off'
             }
         }
+    ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/member-delimiter-style.md
+    '@typescript-eslint/member-delimiter-style': [ 'error' ],
     ]
 };
 
