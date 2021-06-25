@@ -463,6 +463,10 @@ const typescriptEslintExtensionRules = {
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/return-await.md
     'no-return-await': 'off',
     '@typescript-eslint/return-await': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/semi.md
+    'semi': 'off',
+    '@typescript-eslint/semi': [ 'error' ]
 };
 
 module.exports = {

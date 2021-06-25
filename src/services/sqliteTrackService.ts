@@ -12,9 +12,9 @@ export class SqliteTrackService implements TrackService {
 
     public getTrack = async (trackId: number): Promise<Track|undefined> => {
         return this.repository.findOne({ 'id': trackId });
-    }
+    };
 
     public getTracksByAlbumId = async (albumId: number): Promise<Track[]> => {
         return this.repository.find({ 'albumId': albumId });
-    }
+    };
 }

@@ -11,5 +11,5 @@ export class DatabaseContext {
             'logging': true
         };
         await createConnection(options);
-    }
+    };
 }

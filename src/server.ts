@@ -30,5 +30,5 @@ export class Server {
         const message = 'Server is running, GraphQL ' +
                         `Playground available at ${ url }`;
         console.log(message);
-    }
+    };
 }
