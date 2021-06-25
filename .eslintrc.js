@@ -363,7 +363,12 @@ const typescriptEslintRules = {
     ]
 };
 
-// note you must disable the base rule as it can report incorrect errors
+/**
+ *  Many of the base eslint rules don't cover typescript syntax correctly
+ *  the rules below are meant to override those and correctly support typescript
+ *
+ *  NOTE - you must disable the base rule as it can report incorrect errors
+ */
 const typescriptEslintExtensionRules = {
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/brace-style.md
     'brace-style': 'off',
