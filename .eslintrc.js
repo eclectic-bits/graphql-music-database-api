@@ -336,15 +336,18 @@ const typescriptEslintRules = {
     '@typescript-eslint/no-implicit-any-catch': [ 'error', { allowExplicitAny: true} ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-inferrable-types.md
-    '@typescript-eslint/no-inferrable-types': [ 'error' ]
+    '@typescript-eslint/no-inferrable-types': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md
+    '@typescript-eslint/no-namespace': ['error'],
 };
 
 module.exports = {
     root: true,
 
     /**
-   *  Global libraries that don't require an import statement
-   */
+     *  Global libraries that don't require an import statement
+     */
     env: {
 
         // node (process.env, ect...)
@@ -358,8 +361,8 @@ module.exports = {
     parser: '@typescript-eslint/parser',
 
     /**
-   *  Parser Options
-   */
+     *  Parser Options
+     */
     parserOptions: {
         // Allows for the use of imports
         sourceType: 'module',
@@ -370,8 +373,8 @@ module.exports = {
     plugins: [ '@typescript-eslint' ],
 
     /**
-   * Eslint configurations that we extend
-   */
+     * Eslint configurations that we extend
+     */
     extends: [
         // use the default eslint configuration
         'eslint:recommended'
