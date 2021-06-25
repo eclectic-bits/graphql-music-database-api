@@ -4,7 +4,7 @@ import { Album } from '../entities';
 import { AlbumService } from '../interfaces';
 
 export class SqliteAlbumService implements AlbumService {
-    private repository: Repository<Album>;
+    private readonly repository: Repository<Album>;
 
     constructor(connection: Connection = getConnection()) {
         this.repository = connection.getRepository(Album);

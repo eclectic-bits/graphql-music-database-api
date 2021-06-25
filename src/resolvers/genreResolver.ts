@@ -6,7 +6,7 @@ import { SqliteGenreService } from '../services';
 
 @Resolver(Genre)
 export class GenreResolver {
-    constructor(private genreService: GenreService = new SqliteGenreService()) { }
+    constructor(private readonly genreService: GenreService = new SqliteGenreService()) { }
 
     @Query(returns => Genre)
     public async genre(@Arg('genreId') genreId: number): Promise<Genre|undefined> {

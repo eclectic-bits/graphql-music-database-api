@@ -7,8 +7,8 @@ import { SqliteAlbumService, SqliteArtistService } from '../services';
 
 @Resolver(Artist)
 export class ArtistResolver implements ResolverInterface<Artist> {
-    constructor(private artistService: ArtistService = new SqliteArtistService(),
-                private albumService: AlbumService = new SqliteAlbumService()) { }
+    constructor(private readonly artistService: ArtistService = new SqliteArtistService(),
+                private readonly albumService: AlbumService = new SqliteAlbumService()) { }
 
     @Query(returns => [ Artist ])
     public async artists(): Promise<Artist[]> {

@@ -4,7 +4,7 @@ import { Genre } from '../entities';
 import { GenreService } from '../interfaces';
 
 export class SqliteGenreService implements GenreService {
-    private repository: Repository<Genre>;
+    private readonly repository: Repository<Genre>;
 
     constructor(connection: Connection = getConnection()) {
         this.repository = connection.getRepository(Genre);

@@ -4,7 +4,7 @@ import { Artist } from '../entities';
 import { ArtistService } from '../interfaces';
 
 export class SqliteArtistService implements ArtistService {
-    private repository: Repository<Artist>;
+    private readonly repository: Repository<Artist>;
 
     constructor(connection: Connection = getConnection()) {
         this.repository = connection.getRepository(Artist);
