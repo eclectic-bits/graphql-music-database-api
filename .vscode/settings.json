@@ -1,9 +1,12 @@
 {
+  // file end of line setting
   "files.eol": "\n",
-  
+
+  // eslint settings
   "eslint.format.enable": true,
   "eslint.validate": ["typescript", "javascript"],
 
+  // code formatting
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -20,5 +23,80 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
-  }
+  },
+
+  // todo highlight
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": true,
+  "todohighlight.keywords": [
+    {
+      "text": "TODO -",
+      "color": "#000000",
+      "backgroundColor": "#C678DD",
+      "overviewRulerColor": "#C678DD",
+      "border": "1px solid #F48AFF",
+      "borderRadius": "1px",
+      "isWholeLine": false
+    },
+    {
+      "text": "NOTE -",
+      "color": "#000000",
+      "backgroundColor": "#E5C064",
+      "overviewRulerColor": "#E5C064",
+      "border": "1px solid #FFE86F",
+      "borderRadius": "1px",
+      "isWholeLine": false
+    },
+    {
+      "text": "REVIEW -",
+      "color": "#000000",
+      "backgroundColor": "#C69A5B",
+      "overviewRulerColor": "#C69A5B",
+      "border": "1px solid #FFC675",
+      "borderRadius": "1px",
+      "isWholeLine": false
+    },
+    {
+      "text": "FIX -",
+      "color": "#000000",
+      "backgroundColor": "#D46C6F",
+      "overviewRulerColor": "#D46C6F",
+      "border": "1px solid #FF8185",
+      "borderRadius": "1px",
+      "isWholeLine": false
+    },
+    {
+      "text": "RESEARCH -",
+      "color": "#000000",
+      "backgroundColor": "#4FAFEF",
+      "overviewRulerColor": "#4FAFEF",
+      "border": "1px solid #54A3FF",
+      "borderRadius": "1px",
+      "isWholeLine": false
+    }
+  ],
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.css",
+    "**/*.java",
+    "**/*.py"
+  ],
+  "todohighlight.exclude": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/_output/**",
+    "**/*.min.*",
+    "**/*.map",
+    "**/.next/**"
+  ],
+  "todohighlight.maxFilesForSearch": 5120,
+  "todohighlight.toggleURI": false
 }
