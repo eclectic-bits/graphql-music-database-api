@@ -352,6 +352,9 @@ const typescriptEslintRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
     '@typescript-eslint/no-unnecessary-condition': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-for-of.md
+    '@typescript-eslint/prefer-for-of': [ 'error' ]
 };
 
 module.exports = {
