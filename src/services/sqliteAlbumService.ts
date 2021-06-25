@@ -14,7 +14,7 @@ export class SqliteAlbumService implements AlbumService {
         return this.repository.findOne({ id: albumId });
     }
 
-    public getAlbumsByArtistId = (artistId: number): Promise<Album[]> => {
+    public getAlbumsByArtistId = async (artistId: number): Promise<Album[]> => {
         return this.repository.find({ artistId: artistId });
     }
 }

@@ -10,11 +10,11 @@ export class SqliteTrackService implements TrackService {
         this.repository = connection.getRepository(Track);
     }
 
-    public getTrack = (trackId: number): Promise<Track|undefined> => {
+    public getTrack = async (trackId: number): Promise<Track|undefined> => {
         return this.repository.findOne({ id: trackId });
     }
 
-    public getTracksByAlbumId = (albumId: number): Promise<Track[]> => {
+    public getTracksByAlbumId = async (albumId: number): Promise<Track[]> => {
         return this.repository.find({ albumId: albumId });
     }
 }

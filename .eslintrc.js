@@ -357,7 +357,10 @@ const typescriptEslintRules = {
     '@typescript-eslint/prefer-for-of': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-readonly.md
-    "@typescript-eslint/prefer-readonly": [ 'error' ]
+    "@typescript-eslint/prefer-readonly": [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/promise-function-async.md
+    "@typescript-eslint/promise-function-async": [ 'error' ]
 };
 
 module.exports = {
