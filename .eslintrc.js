@@ -343,6 +343,9 @@ const typescriptEslintRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-require-imports.md
     '@typescript-eslint/no-require-imports': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-this-alias.md
+    '@typescript-eslint/no-this-alias': [ 'error' ]
 };
 
 module.exports = {
