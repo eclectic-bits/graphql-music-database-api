@@ -8,8 +8,8 @@ import { SqliteAlbumService, SqliteGenreService, SqliteTrackService } from '../s
 @Resolver(Track)
 export class TrackResolver implements ResolverInterface<Track> {
     constructor(private readonly trackService: TrackService = new SqliteTrackService(),
-                private readonly albumService: AlbumService = new SqliteAlbumService(),
-                private readonly genreService: GenreService = new SqliteGenreService()) { }
+        private readonly albumService: AlbumService = new SqliteAlbumService(),
+        private readonly genreService: GenreService = new SqliteGenreService()) { }
 
     @Query(returns => Track)
     public async track(@Arg('trackId') trackId: number): Promise<Track|undefined> {

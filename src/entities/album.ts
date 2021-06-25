@@ -4,14 +4,14 @@ import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'ty
 import { Artist } from './artist';
 import { Track } from './track';
 
-@Entity({ name: 'albums' })
+@Entity({ 'name': 'albums' })
 @ObjectType()
 export class Album {
-    @PrimaryGeneratedColumn({ name: 'albumId' })
+    @PrimaryGeneratedColumn({ 'name': 'albumId' })
     @Field(type => ID)
     public id: number;
 
-    @Column({ length: 160 })
+    @Column({ 'length': 160 })
     @Field()
     public title: string;
 

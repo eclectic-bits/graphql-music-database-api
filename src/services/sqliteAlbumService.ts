@@ -11,10 +11,10 @@ export class SqliteAlbumService implements AlbumService {
     }
 
     public getAlbum = async (albumId: number): Promise<Album | undefined> => {
-        return this.repository.findOne({ id: albumId });
+        return this.repository.findOne({ 'id': albumId });
     }
 
     public getAlbumsByArtistId = async (artistId: number): Promise<Album[]> => {
-        return this.repository.find({ artistId: artistId });
+        return this.repository.find({ 'artistId': artistId });
     }
 }

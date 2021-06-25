@@ -15,13 +15,13 @@ export class Server {
 
         // ... build graphql schema
         const schema = await buildSchema({
-            resolvers: [ AlbumResolver, ArtistResolver, GenreResolver, TrackResolver ]
+            'resolvers': [ AlbumResolver, ArtistResolver, GenreResolver, TrackResolver ]
         });
 
         // Create the GraphQL server
         const server = new ApolloServer({
             schema,
-            playground: true
+            'playground': true
         });
 
         // Start the server

@@ -11,7 +11,7 @@ export class SqliteArtistService implements ArtistService {
     }
 
     public getArtist = async (artistId: number): Promise<Artist | undefined> => {
-        return this.repository.findOne({ id: artistId });
+        return this.repository.findOne({ 'id': artistId });
     }
 
     public getArtists = async (): Promise<Artist[]> => {

@@ -7,22 +7,25 @@ const possibleErrorRules = {
 // https://eslint.org/docs/rules/#best-practices
 const bestPracticeRules = {
     // https://eslint.org/docs/rules/complexity
-    complexity: [ 'warn', { max: 5 } ],
+    'complexity': [ 'warn', { 'max': 5 } ],
 
     // https://eslint.org/docs/rules/consistent-return
-    'consistent-return': [ 'error', { treatUndefinedAsUnspecified: true } ],
+    'consistent-return': [ 'error', { 'treatUndefinedAsUnspecified': true } ],
 
     // https://eslint.org/docs/rules/curly
-    curly: [ 'error' ],
+    'curly': [ 'error' ],
 
     // https://eslint.org/docs/rules/eqeqeq
-    eqeqeq: [ 'error', 'always' ],
+    'eqeqeq': [ 'error', 'always' ],
 
     // https://eslint.org/docs/rules/no-else-return
     'no-else-return': [ 'error' ],
 
     // https://eslint.org/docs/rules/no-empty-function
-    'no-empty-function': [ 'error', { allow: [ 'constructors' ] } ],
+    'no-empty-function': [ 'error', { 'allow': [ 'constructors' ] } ],
+
+    // https://eslint.org/docs/rules/no-invalid-this
+    'no-invalid-this': [ 'error' ],
 
     // https://eslint.org/docs/rules/no-multi-spaces
     'no-multi-spaces': [ 'error' ],
@@ -43,7 +46,7 @@ const bestPracticeRules = {
 // https://eslint.org/docs/rules/#variables
 const variableRules = {
     // https://eslint.org/docs/rules/no-unused-vars
-    'no-unused-vars': [ 'error', { args: 'none' } ]
+    'no-unused-vars': [ 'error', { 'args': 'none' } ]
 };
 
 // https://eslint.org/docs/rules/#stylistic-issues
@@ -64,7 +67,7 @@ const stylisticRules = {
     'brace-style': [ 'error', '1tbs' ],
 
     // https://eslint.org/docs/rules/camelcase
-    camelcase: [ 'error', { properties: 'always' } ],
+    'camelcase': [ 'error', { 'properties': 'always' } ],
 
     // https://eslint.org/docs/rules/comma-dangle
     'comma-dangle': [ 'error', 'never' ],
@@ -73,8 +76,8 @@ const stylisticRules = {
     'comma-spacing': [
         'error',
         {
-            before: false,
-            after: true
+            'before': false,
+            'after': true
         }
     ],
 
@@ -97,14 +100,14 @@ const stylisticRules = {
     'implicit-arrow-linebreak': [ 'error', 'beside' ],
 
     // https://eslint.org/docs/rules/indent
-    indent: [ 'error', 4, { MemberExpression: 1 } ],
+    'indent': [ 'error', 4, { 'MemberExpression': 1 } ],
 
     // https://eslint.org/docs/rules/key-spacing
     'key-spacing': [
         'error',
         {
-            beforeColon: false,
-            afterColon: true
+            'beforeColon': false,
+            'afterColon': true
         }
     ],
 
@@ -112,8 +115,8 @@ const stylisticRules = {
     'keyword-spacing': [
         'error',
         {
-            before: true,
-            after: true
+            'before': true,
+            'after': true
         }
     ],
 
@@ -124,12 +127,12 @@ const stylisticRules = {
     'lines-around-comment': [
         'error',
         {
-            beforeBlockComment: true,
-            beforeLineComment: true,
-            allowBlockStart: true,
-            allowClassStart: true,
-            allowObjectStart: true,
-            allowArrayStart: true
+            'beforeBlockComment': true,
+            'beforeLineComment': true,
+            'allowBlockStart': true,
+            'allowClassStart': true,
+            'allowObjectStart': true,
+            'allowArrayStart': true
         }
     ],
 
@@ -138,23 +141,23 @@ const stylisticRules = {
         'error',
         'always',
         {
-            exceptAfterSingleLine: true
+            'exceptAfterSingleLine': true
         }
     ],
 
     // https://eslint.org/docs/rules/max-depth
-    'max-depth': [ 'error', { max: 4 } ],
+    'max-depth': [ 'error', { 'max': 4 } ],
 
     // https://eslint.org/docs/rules/max-len
-    'max-len': [ 'error', { code: 120, ignoreComments: true } ],
+    'max-len': [ 'error', { 'code': 120, 'ignoreComments': true } ],
 
     // https://eslint.org/docs/rules/max-lines
     'max-lines': [
         'error',
         {
-            max: 500,
-            skipBlankLines: true,
-            skipComments: true
+            'max': 500,
+            'skipBlankLines': true,
+            'skipComments': true
         }
     ],
 
@@ -162,20 +165,20 @@ const stylisticRules = {
     'max-lines-per-function': [
         'error',
         {
-            max: 50,
-            skipBlankLines: true,
-            skipComments: true
+            'max': 50,
+            'skipBlankLines': true,
+            'skipComments': true
         }
     ],
 
     // https://eslint.org/docs/rules/max-params
-    'max-params': [ 'error', { max: 4 } ],
+    'max-params': [ 'error', { 'max': 4 } ],
 
     // https://eslint.org/docs/rules/max-statements
-    'max-statements': [ 'error', { max: 10 } ],
+    'max-statements': [ 'error', { 'max': 10 } ],
 
     // https://eslint.org/docs/rules/max-statements-per-line
-    'max-statements-per-line': [ 'error', { max: 1 } ],
+    'max-statements-per-line': [ 'error', { 'max': 1 } ],
 
     // https://eslint.org/docs/rules/no-multi-assign
     'no-multi-assign': [ 'error' ],
@@ -184,9 +187,9 @@ const stylisticRules = {
     'no-multiple-empty-lines': [
         'error',
         {
-            max: 2,
-            maxEOF: 0,
-            maxBOF: 0
+            'max': 2,
+            'maxEOF': 0,
+            'maxBOF': 0
         }
     ],
 
@@ -197,7 +200,7 @@ const stylisticRules = {
     'no-whitespace-before-property': [ 'error' ],
 
     // https://eslint.org/docs/rules/object-curly-newline
-    'object-curly-newline': [ 'error', { consistent: true } ],
+    'object-curly-newline': [ 'error', { 'consistent': true } ],
 
     // https://eslint.org/docs/rules/object-curly-spacing
     'object-curly-spacing': [ 'error', 'always' ],
@@ -206,7 +209,7 @@ const stylisticRules = {
     'object-property-newline': [
         'error',
         {
-            allowAllPropertiesOnSameLine: true
+            'allowAllPropertiesOnSameLine': true
         }
     ],
 
@@ -220,26 +223,26 @@ const stylisticRules = {
     'padded-blocks': [
         'error',
         {
-            blocks: 'never',
-            classes: 'never'
+            'blocks': 'never',
+            'classes': 'never'
         }
     ],
 
     // https://eslint.org/docs/rules/quote-props
-    'quote-props': [ 'error', 'as-needed' ],
+    'quote-props': [ 'error', 'always' ],
 
     // https://eslint.org/docs/rules/quotes
-    quotes: [ 'error', 'single' ],
+    'quotes': [ 'error', 'single' ],
 
     // https://eslint.org/docs/rules/semi
-    semi: [ 'error' ],
+    'semi': [ 'error' ],
 
     // https://eslint.org/docs/rules/semi-spacing
     'semi-spacing': [
         'error',
         {
-            before: false,
-            after: false
+            'before': false,
+            'after': false
         }
     ],
 
@@ -250,9 +253,9 @@ const stylisticRules = {
     'space-before-blocks': [
         'error',
         {
-            functions: 'always',
-            keywords: 'always',
-            classes: 'always'
+            'functions': 'always',
+            'keywords': 'always',
+            'classes': 'always'
         }
     ]
 };
@@ -263,10 +266,10 @@ const ecmaScriptRules = {
     'arrow-parens': [ 'error', 'as-needed' ],
 
     // https://eslint.org/docs/rules/arrow-spacing
-    'arrow-spacing': [ 'error', { before: true, after: true } ],
+    'arrow-spacing': [ 'error', { 'before': true, 'after': true } ],
 
     // https://eslint.org/docs/rules/no-duplicate-imports
-    'no-duplicate-imports': [ 'error', { includeExports: true } ],
+    'no-duplicate-imports': [ 'error', { 'includeExports': true } ],
 
     // https://eslint.org/docs/rules/no-var
     'no-var': [ 'error' ],
@@ -275,7 +278,7 @@ const ecmaScriptRules = {
     'prefer-const': [ 'error' ],
 
     // https://eslint.org/docs/rules/prefer-destructuring
-    'prefer-destructuring': [ 'error', { object: true, array: true } ],
+    'prefer-destructuring': [ 'error', { 'object': true, 'array': true } ],
 
     // https://eslint.org/docs/rules/prefer-spread
     'prefer-spread': [ 'error' ],
@@ -284,7 +287,7 @@ const ecmaScriptRules = {
     'prefer-template': [ 'error' ],
 
     // https://eslint.org/docs/rules/sort-imports
-    'sort-imports': [ 'error', { ignoreDeclarationSort: true } ],
+    'sort-imports': [ 'error', { 'ignoreDeclarationSort': true } ],
 
     // https://eslint.org/docs/rules/template-curly-spacing
     'template-curly-spacing': [ 'error', 'always' ]
@@ -295,9 +298,9 @@ const typescriptEslintRules = {
     '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {
-            accessibility: 'explicit',
-            overrides: {
-                constructors: 'off'
+            'accessibility': 'explicit',
+            'overrides': {
+                'constructors': 'off'
             }
         }
     ],
@@ -321,7 +324,7 @@ const typescriptEslintRules = {
     '@typescript-eslint/no-floating-promises': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implicit-any-catch.md
-    '@typescript-eslint/no-implicit-any-catch': [ 'error', { allowExplicitAny: true } ],
+    '@typescript-eslint/no-implicit-any-catch': [ 'error', { 'allowExplicitAny': true } ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-inferrable-types.md
     '@typescript-eslint/no-inferrable-types': [ 'error' ],
@@ -357,8 +360,8 @@ const typescriptEslintRules = {
     '@typescript-eslint/type-annotation-spacing': [
         'error',
         {
-            before: false,
-            after: true
+            'before': false,
+            'after': true
         }
     ]
 };
@@ -401,43 +404,43 @@ const typescriptEslintExtensionRules = {
 };
 
 module.exports = {
-    root: true,
+    'root': true,
 
     /**
      *  Global libraries that don't require an import statement
      */
-    env: {
+    'env': {
         // node (process.env, ect...)
-        node: true,
+        'node': true,
 
         // jest libraries (beforeAll, beforeEach, describe, ect...)
-        jest: true
+        'jest': true
     },
 
     // Specifies the ESLint parser
-    parser: '@typescript-eslint/parser',
+    'parser': '@typescript-eslint/parser',
 
     /**
      *  Parser Options
      */
-    parserOptions: {
+    'parserOptions': {
         // Allows for the use of imports
-        sourceType: 'module',
+        'sourceType': 'module',
 
-        project: './tsconfig.eslint.json'
+        'project': './tsconfig.eslint.json'
     },
 
-    plugins: [ '@typescript-eslint' ],
+    'plugins': [ '@typescript-eslint' ],
 
     /**
      * Eslint configurations that we extend
      */
-    extends: [
+    'extends': [
         // use the default eslint configuration
         'eslint:recommended'
     ],
 
-    rules: {
+    'rules': {
         ...possibleErrorRules,
         ...bestPracticeRules,
         ...variableRules,
@@ -445,11 +448,11 @@ module.exports = {
         ...ecmaScriptRules
     },
 
-    overrides: [
+    'overrides': [
         {
             // enable the rule specifically for TypeScript files
-            files: [ '*.ts' ],
-            rules: {
+            'files': [ '*.ts' ],
+            'rules': {
                 ...typescriptEslintRules,
                 ...typescriptEslintExtensionRules
             }

@@ -3,14 +3,14 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Album } from '../entities';
 
-@Entity({ name: 'artists' })
+@Entity({ 'name': 'artists' })
 @ObjectType()
 export class Artist {
-    @PrimaryGeneratedColumn({ name: 'artistId' })
+    @PrimaryGeneratedColumn({ 'name': 'artistId' })
     @Field(type => ID)
     public id: number;
 
-    @Column({ length: 120 })
+    @Column({ 'length': 120 })
     @Field()
     public name: string;
 

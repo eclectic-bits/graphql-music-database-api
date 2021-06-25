@@ -4,14 +4,14 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Album } from './album';
 import { Genre } from './genre';
 
-@Entity({ name: 'tracks' })
+@Entity({ 'name': 'tracks' })
 @ObjectType()
 export class Track {
-    @PrimaryGeneratedColumn({ name: 'trackId' })
+    @PrimaryGeneratedColumn({ 'name': 'trackId' })
     @Field(type => ID)
     public id: number;
 
-    @Column({ length: 200 })
+    @Column({ 'length': 200 })
     @Field()
     public name: string;
 
@@ -35,7 +35,7 @@ export class Track {
     @Field(type => Genre)
     public genre: Genre;
 
-    @Column({ length: 220 })
+    @Column({ 'length': 220 })
     @Field()
     public composer: string;
 

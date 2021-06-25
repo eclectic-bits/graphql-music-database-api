@@ -3,14 +3,14 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Track } from './track';
 
-@Entity({ name: 'genres' })
+@Entity({ 'name': 'genres' })
 @ObjectType()
 export class Genre {
-    @PrimaryGeneratedColumn({ name: 'genreId' })
+    @PrimaryGeneratedColumn({ 'name': 'genreId' })
     @Field(type => ID)
     public id: number;
 
-    @Column({ length: 120 })
+    @Column({ 'length': 120 })
     @Field()
     public name: string;
 
