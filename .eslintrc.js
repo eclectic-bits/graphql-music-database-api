@@ -294,15 +294,6 @@ const ecmaScriptRules = {
 };
 
 const typescriptEslintRules = {
-    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
-    '@typescript-eslint/type-annotation-spacing': [
-        'error',
-        {
-            before: false,
-            after: true
-        }
-    ],
-
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-member-accessibility.md
     '@typescript-eslint/explicit-member-accessibility': [
         'error',
@@ -333,13 +324,13 @@ const typescriptEslintRules = {
     '@typescript-eslint/no-floating-promises': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implicit-any-catch.md
-    '@typescript-eslint/no-implicit-any-catch': [ 'error', { allowExplicitAny: true} ],
+    '@typescript-eslint/no-implicit-any-catch': [ 'error', { allowExplicitAny: true } ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-inferrable-types.md
     '@typescript-eslint/no-inferrable-types': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md
-    '@typescript-eslint/no-namespace': ['error'],
+    '@typescript-eslint/no-namespace': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-require-imports.md
     '@typescript-eslint/no-require-imports': [ 'error' ],
@@ -361,6 +352,25 @@ const typescriptEslintRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/promise-function-async.md
     '@typescript-eslint/promise-function-async': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/sort-type-union-intersection-members.md
+    '@typescript-eslint/sort-type-union-intersection-members': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
+    '@typescript-eslint/type-annotation-spacing': [
+        'error',
+        {
+            before: false,
+            after: true
+        }
+    ]
+};
+
+const typescriptEslintExtensionRules = {
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/brace-style.md
+    // note you must disable the base rule as it can report incorrect errors
+    'brace-style': 'off',
+    '@typescript-eslint/brace-style': [ 'error' ]
 };
 
 module.exports = {
@@ -370,7 +380,6 @@ module.exports = {
      *  Global libraries that don't require an import statement
      */
     env: {
-
         // node (process.env, ect...)
         node: true,
 
@@ -388,7 +397,7 @@ module.exports = {
         // Allows for the use of imports
         sourceType: 'module',
 
-        project: './tsconfig.json'
+        project: './tsconfig.eslint.json'
     },
 
     plugins: [ '@typescript-eslint' ],
@@ -414,7 +423,8 @@ module.exports = {
             // enable the rule specifically for TypeScript files
             files: [ '*.ts' ],
             rules: {
-                ...typescriptEslintRules
+                ...typescriptEslintRules,
+                ...typescriptEslintExtensionRules
             }
         }
     ]
