@@ -340,6 +340,9 @@ const typescriptEslintRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md
     '@typescript-eslint/no-namespace': ['error'],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-require-imports.md
+    '@typescript-eslint/no-require-imports': [ 'error' ],
 };
 
 module.exports = {
