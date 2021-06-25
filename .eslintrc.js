@@ -348,7 +348,10 @@ const typescriptEslintRules = {
     '@typescript-eslint/no-this-alias': [ 'error' ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-boolean-literal-compare.md
-    '@typescript-eslint/no-unnecessary-boolean-literal-compare': [ 'error' ]
+    '@typescript-eslint/no-unnecessary-boolean-literal-compare': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
+    '@typescript-eslint/no-unnecessary-condition': [ 'error' ],
 };
 
 module.exports = {
