@@ -1,15 +1,16 @@
 import { Arg, FieldResolver, Query,
     Resolver, ResolverInterface, Root } from 'type-graphql';
 
-import { Album, Genre, Track } from '../entities';
-import { AlbumService, GenreService, TrackService } from '../interfaces';
-import { SqliteAlbumService, SqliteGenreService, SqliteTrackService } from '../services';
+import { Album, Genre, MediaType, Track } from '../entities';
+import { AlbumService, GenreService, MediaTypeService, TrackService } from '../interfaces';
+import { SqliteAlbumService, SqliteGenreService, SqliteMediaTypeService, SqliteTrackService } from '../services';
 
 @Resolver(Track)
 export class TrackResolver implements ResolverInterface<Track> {
     constructor(private readonly trackService: TrackService = new SqliteTrackService(),
         private readonly albumService: AlbumService = new SqliteAlbumService(),
-        private readonly genreService: GenreService = new SqliteGenreService()) { }
+        private readonly genreService: GenreService = new SqliteGenreService(),
+        private readonly mediaTypeService: MediaTypeService = new SqliteMediaTypeService()) { }
 
     @Query(returns => Track)
     public async track(@Arg('trackId') trackId: number): Promise<Track|undefined> {
@@ -39,5 +40,15 @@ export class TrackResolver implements ResolverInterface<Track> {
         }
 
         return genre;
+    }
+
+    @FieldResolver()
+    public async mediaType(@Root() track: Track): Promise<MediaType> {
+        const mediaType = await this.mediaTypeService.getMediaType(track.mediaTypeId);
+        if (mediaType === undefined) {
+            throw new Error(`A media type wasn't associated with trackId: ${ track.id }`);
+        }
+
+        return mediaType;
     }
 }

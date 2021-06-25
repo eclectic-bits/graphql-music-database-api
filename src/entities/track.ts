@@ -3,6 +3,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Album } from './album';
 import { Genre } from './genre';
+import { MediaType } from './mediaType';
 
 @Entity({ 'name': 'tracks' })
 @ObjectType()
@@ -26,6 +27,10 @@ export class Track {
     @Column()
     @Field()
     public mediaTypeId: number;
+
+    @ManyToOne(() => MediaType, mediaType => mediaType.tracks)
+    @Field(type => MediaType)
+    public mediaType: MediaType;
 
     @Column()
     @Field()
