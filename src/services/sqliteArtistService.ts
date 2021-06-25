@@ -10,7 +10,7 @@ export class SqliteArtistService implements ArtistService {
         this.repository = connection.getRepository(Artist);
     }
 
-    public getArtist = async (artistId: number): Promise<Artist|undefined> => {
+    public getArtist = async (artistId: number): Promise<Artist | undefined> => {
         return this.repository.findOne({ id: artistId });
     }
 

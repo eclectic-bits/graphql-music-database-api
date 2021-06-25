@@ -9,6 +9,7 @@
     "nodemon.json",
     ".eslintrc.js",
     ".eslintignore",
-    "tsconfig.json"
+    "tsconfig.json",
+    "tsconfig.eslint.json"
   ]
 }

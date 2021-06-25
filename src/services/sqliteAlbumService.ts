@@ -10,7 +10,7 @@ export class SqliteAlbumService implements AlbumService {
         this.repository = connection.getRepository(Album);
     }
 
-    public getAlbum = async (albumId: number): Promise<Album|undefined> => {
+    public getAlbum = async (albumId: number): Promise<Album | undefined> => {
         return this.repository.findOne({ id: albumId });
     }
 
