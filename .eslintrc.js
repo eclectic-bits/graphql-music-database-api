@@ -46,7 +46,10 @@ const bestPracticeRules = {
 // https://eslint.org/docs/rules/#variables
 const variableRules = {
     // https://eslint.org/docs/rules/no-unused-vars
-    'no-unused-vars': [ 'error', { 'args': 'none' } ]
+    'no-unused-vars': [ 'error', { 'args': 'none' } ],
+
+    // https://eslint.org/docs/rules/no-use-before-define
+    'no-use-before-define': [ 'error' ]
 };
 
 // https://eslint.org/docs/rules/#stylistic-issues
@@ -293,6 +296,9 @@ const ecmaScriptRules = {
     'template-curly-spacing': [ 'error', 'always' ]
 };
 
+/**
+ * Additional typescript specific eslint rules
+ */
 const typescriptEslintRules = {
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-member-accessibility.md
     '@typescript-eslint/explicit-member-accessibility': [
@@ -398,9 +404,65 @@ const typescriptEslintExtensionRules = {
     'indent': 'off',
     '@typescript-eslint/indent': [ 'error', 4, { 'MemberExpression': 1 } ],
 
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/keyword-spacing.md
+    'keyword-spacing': 'off',
+    '@typescript-eslint/keyword-spacing': [
+        'error',
+        {
+            'before': true,
+            'after': true
+        }
+    ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/lines-between-class-members.md
+    'lines-between-class-members': 'off',
+    '@typescript-eslint/lines-between-class-members': [
+        'error',
+        'always',
+        {
+            'exceptAfterSingleLine': true
+        }
+    ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-dupe-class-members.md
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-dupe-class-members': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-duplicate-imports.md
+    'no-duplicate-imports': 'off',
+    '@typescript-eslint/no-duplicate-imports': [ 'error', { 'includeExports': true } ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-function.md
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': [ 'error', { 'allow': [ 'constructors' ] } ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extra-semi.md
+    'no-extra-semi': 'off',
+    '@typescript-eslint/no-extra-semi': [ 'error' ],
+
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-invalid-this.md
     'no-invalid-this': 'off',
-    '@typescript-eslint/no-invalid-this': [ 'error' ]
+    '@typescript-eslint/no-invalid-this': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [ 'error', { 'args': 'none' } ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/object-curly-spacing.md
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/object-curly-spacing': [ 'error', 'always' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/quotes.md
+    'quotes': 'off',
+    '@typescript-eslint/quotes': [ 'error', 'single' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/return-await.md
+    'no-return-await': 'off',
+    '@typescript-eslint/return-await': [ 'error' ],
 };
 
 module.exports = {
