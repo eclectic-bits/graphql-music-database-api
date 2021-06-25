@@ -24,9 +24,6 @@ const bestPracticeRules = {
     // https://eslint.org/docs/rules/no-empty-function
     'no-empty-function': [ 'error', { allow: [ 'constructors' ] } ],
 
-    // https://eslint.org/docs/rules/no-invalid-this
-    // "no-invalid-this": ["error"],
-
     // https://eslint.org/docs/rules/no-multi-spaces
     'no-multi-spaces': [ 'error' ],
 
@@ -366,11 +363,15 @@ const typescriptEslintRules = {
     ]
 };
 
+// note you must disable the base rule as it can report incorrect errors
 const typescriptEslintExtensionRules = {
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/brace-style.md
-    // note you must disable the base rule as it can report incorrect errors
     'brace-style': 'off',
-    '@typescript-eslint/brace-style': [ 'error' ]
+    '@typescript-eslint/brace-style': [ 'error' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-invalid-this.md
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': [ 'error' ]
 };
 
 module.exports = {
