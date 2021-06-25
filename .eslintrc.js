@@ -374,6 +374,27 @@ const typescriptEslintExtensionRules = {
     'brace-style': 'off',
     '@typescript-eslint/brace-style': [ 'error' ],
 
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': [ 'error', 'never' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-spacing.md
+    'comma-spacing': 'off',
+    '@typescript-eslint/comma-spacing': [
+        'error', {
+            'before': false,
+            'after': true
+        }
+    ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/func-call-spacing.md
+    'func-call-spacing': 'off',
+    '@typescript-eslint/func-call-spacing': [ 'error', 'never' ],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
+    'indent': 'off',
+    '@typescript-eslint/indent': [ 'error', 4, { 'MemberExpression': 1 } ],
+
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-invalid-this.md
     'no-invalid-this': 'off',
     '@typescript-eslint/no-invalid-this': [ 'error' ]
