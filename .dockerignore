@@ -1,9 +1,15 @@
 # Ignore all files by default
-*# Include these files only (not ignore)
+*
+
+# Include these files only (not ignore)
 !package*.json
+
+!.eslintignore
 !.eslintrc.js
+
 !tsconfig.json
-!chinook.db
+!tsconfig.eslint.json
 
 # allowed folders
 !src
+!data

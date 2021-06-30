@@ -35,6 +35,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY --from=build /app/package*.json ./
 RUN npm clean-install --production --silent
 COPY --from=build /app/dist ./src
+COPY --from=build /app/data ./data
 
 # run application using node
-CMD ["node", "./src/app.js"]
+CMD ["node", "./src/index.js"]
