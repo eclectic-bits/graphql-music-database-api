@@ -1,5 +1,4 @@
-import { Arg, FieldResolver, Query, Resolver,
-    ResolverInterface, Root } from 'type-graphql';
+import { Arg, FieldResolver, Query, Resolver, ResolverInterface, Root } from 'type-graphql';
 
 import { Album, Artist } from '../entities';
 import { AlbumService, ArtistService } from '../interfaces';
