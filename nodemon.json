@@ -5,10 +5,11 @@
   "delay": 2000,
   "watch": [
     "src/",
-    "package.json",
-    "nodemon.json",
     ".eslintrc.js",
     ".eslintignore",
+    "jest.json",
+    "nodemon.json",
+    "package.json",
     "tsconfig.json",
     "tsconfig.eslint.json"
   ]
