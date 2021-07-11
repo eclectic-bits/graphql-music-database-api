@@ -1,41 +1,13 @@
-import { ApolloServer } from 'apollo-server';
-import { buildSchema } from 'type-graphql';
+import express from 'express';
 
-import { DatabaseContext } from './contexts';
-import { AlbumResolver, ArtistResolver, MediaTypeResolver, PlaylistResolver, TrackResolver } from './resolvers';
-import { GenreResolver } from './resolvers/genreResolver';
+import { Middleware } from './types';
 
-export class Server {
-    /**
-     *  Start Server
-     */
-    public start = async (port: number|string) => {
-        // initialize database connection
-        await DatabaseContext.initializeDatabaseConnection();
+const server = async (graphQlHttpConfiguration: Middleware): Promise<express.Express> => {
+    // Create the GraphQL server using express
+    const app: express.Express = express();
+    app.use('/', graphQlHttpConfiguration);
 
-        // ... build graphql schema
-        const schema = await buildSchema({
-            'resolvers': [
-                AlbumResolver,
-                ArtistResolver,
-                GenreResolver,
-                MediaTypeResolver,
-                PlaylistResolver,
-                TrackResolver
-            ]
-        });
+    return app;
+};
 
-        // Create the GraphQL server
-        const server = new ApolloServer({
-            schema,
-            'playground': true
-        });
-
-        // Start the server
-        const { url } = await server.listen(port);
-
-        const message = 'Server is running, GraphQL ' +
-                        `Playground available at ${ url }`;
-        console.log(message);
-    };
-}
+export { server };
