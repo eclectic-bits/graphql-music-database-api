@@ -2,5 +2,7 @@
   "preset": "ts-jest",
   "testEnvironment": "node",
   "verbose": true,
-  "roots": ["<rootDir>/tests"]
+  "roots": ["<rootDir>/tests"],
+  "setupFilesAfterEnv": ["<rootDir>/tests/setupTests.ts"],
+  "collectCoverageFrom": ["<rootDir>/tests"]
 }
