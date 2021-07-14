@@ -7,7 +7,7 @@ import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
 let app: express.Express;
 beforeAll(async () => {
     // database
-    await DatabaseContext.initializeDatabaseConnection();
+    await DatabaseContext.initializeDatabaseConnection({ 'debug': false });
 
     // schema
     const schema = await GraphqlHttpContext.generateHttpConfiguration();

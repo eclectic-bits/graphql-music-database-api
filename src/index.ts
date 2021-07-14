@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 4000;
 
 const main = async () => {
     // initialize database connection
-    await DatabaseContext.initializeDatabaseConnection();
+    await DatabaseContext.initializeDatabaseConnection({ 'debug': true });
 
     // generate graphQl http configuration
     const graphQlHttpConfiguration = await GraphqlHttpContext.generateHttpConfiguration();
