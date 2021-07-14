@@ -10,7 +10,7 @@ export class AlbumResolver implements ResolverInterface<Album> {
         private readonly albumService: AlbumService = new SqliteAlbumService(),
         private readonly trackService: TrackService = new SqliteTrackService()) { }
 
-    @Query(returns => Album)
+    @Query(returns => Album, { 'nullable': true })
     public async album(@Arg('albumId') albumId: number): Promise<Album|undefined> {
         return this.albumService.getAlbum(albumId);
     }
