@@ -16,7 +16,7 @@ beforeAll(async () => {
 });
 
 describe('get all artists', () => {
-    it('should contain 275 artists in the sample database', async () => {
+    test('query all artists in database, returns 275 total artists', async () => {
         // arrange
         const query = '{ artists { id, name } }';
 
@@ -38,7 +38,7 @@ describe('get all artists', () => {
 });
 
 describe('get artist by artist id', () => {
-    it('should contain AC/DC as artistId: 1', async () => {
+    test('query artist by artist id: 1, returns AC/DC', async () => {
         // arrange
         const query = '{ artist(artistId: 1) { name } }';
 
@@ -58,7 +58,7 @@ describe('get artist by artist id', () => {
             });
     });
 
-    it('should contain Aerosmith as artistId: 3', async () => {
+    test('query artist by artist id: 3, returns Aerosmith', async () => {
         // arrange
         const query = '{ artist(artistId: 3) { name } }';
 
@@ -78,7 +78,7 @@ describe('get artist by artist id', () => {
             });
     });
 
-    it('should return null because artistId 1000 doesn\'t exist', async () => {
+    test('query artist by artist id: 1000, returns null', async () => {
         // arrange
         const query = '{ artist(artistId: 1000) { name } }';
 
@@ -100,7 +100,7 @@ describe('get artist by artist id', () => {
 });
 
 describe('get albums artist by field resolver', () => {
-    it('should contain 2 albums for artistId: 1 (AC/DC)', async () => {
+    test('query albums by artistId: 1 (AC/DC)', async () => {
         // arrange
         const query = '{ artist(artistId: 1) { name, albums { title } } }';
 
@@ -120,7 +120,7 @@ describe('get albums artist by field resolver', () => {
             });
     });
 
-    it('should contain 1 album for artistId: 3 (Aerosmith)', async () => {
+    test('query albums by artistId: 3 (Aerosmith)', async () => {
         // arrange
         const query = '{ artist(artistId: 3) { name, albums { title } } }';
 
