@@ -5,8 +5,8 @@ import 'reflect-metadata';
 import request from 'supertest';
 import express from 'express';
 
-import { server } from '../../src/server';
-import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
+import { server } from '../src/server';
+import { DatabaseContext, GraphqlHttpContext } from '../src/contexts';
 
 let app: express.Express;
 beforeAll(async () => {
@@ -76,6 +76,26 @@ describe('get artist by artist id', () => {
                 // assert
                 const { artist } = response.body.data;
                 expect(artist.name).toBe('Aerosmith');
+            })
+            .catch(err => {
+                throw err;
+            });
+    });
+
+    it('should return null because artistId 1000 doesn\'t exist', async () => {
+        // arrange
+        const query = '{ artist(artistId: 1000) { name } }';
+
+        // act
+        await request(app)
+            .post('/')
+            .send({ 'query': query })
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .then(response => {
+                // assert
+                const { artist } = response.body.data;
+                expect(artist).toBeNull();
             })
             .catch(err => {
                 throw err;

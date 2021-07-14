@@ -14,7 +14,7 @@ export class ArtistResolver implements ResolverInterface<Artist> {
         return this.artistService.getArtists();
     }
 
-    @Query(returns => Artist)
+    @Query(returns => Artist, { 'nullable': true })
     public async artist(@Arg('artistId') artistId: number): Promise<Artist|undefined> {
         return this.artistService.getArtist(artistId);
     }
