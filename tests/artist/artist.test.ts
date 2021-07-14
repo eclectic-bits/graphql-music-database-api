@@ -1,12 +1,8 @@
-// 'reflect-metadata' is needed for type-graphql,
-// and typeorm this needs to be run first
-import 'reflect-metadata';
-
 import request from 'supertest';
 import express from 'express';
 
-import { server } from '../src/server';
-import { DatabaseContext, GraphqlHttpContext } from '../src/contexts';
+import { server } from '../../src/server';
+import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
 
 let app: express.Express;
 beforeAll(async () => {

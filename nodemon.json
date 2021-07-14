@@ -9,6 +9,7 @@
     ".eslintrc.js",
     ".eslintignore",
     "jest.json",
+    "jest.setup.ts",
     "nodemon.json",
     "package.json",
     "tsconfig.json",

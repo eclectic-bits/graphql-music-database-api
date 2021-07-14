@@ -5,5 +5,5 @@
   // add eslint support for tests and the eslintrc file,
   // this means that builds don't include these files, but the
   // eslint extension still runs against them
-  "include": ["src/**/*", "tests/**/*", ".eslintrc.js"]
+  "include": ["src/**/*", "tests/**/*", ".eslintrc.js", "jest.setup.ts"]
 }

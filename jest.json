@@ -3,5 +3,6 @@
   "testEnvironment": "node",
   "verbose": true,
   "roots": ["<rootDir>/tests"],
-  "collectCoverageFrom": ["<rootDir>/tests"]
+  "collectCoverageFrom": ["<rootDir>/tests"],
+  "setupFilesAfterEnv": ["<rootDir>/tests/jest.setup.ts"]
 }
