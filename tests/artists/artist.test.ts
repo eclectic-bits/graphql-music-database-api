@@ -1,3 +1,7 @@
+// 'reflect-metadata' is needed for type-graphql,
+// and typeorm this needs to be run first
+import 'reflect-metadata';
+
 import request from 'supertest';
 import express from 'express';
 
