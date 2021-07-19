@@ -1,8 +1,8 @@
-import request from 'supertest';
 import express from 'express';
 
 import { server } from '../../src/server';
 import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
+import { TestUtility } from '../testUtility';
 
 let app: express.Express;
 beforeAll(async () => {
@@ -16,26 +16,30 @@ beforeAll(async () => {
 });
 
 describe('get all albums by artistId', () => {
-    it('should contain 2 albums by artistsId: 1 (AC/DC)', async () => {
+    test('artistsId: 3 (Aerosmith) contains 1 albums', async () => {
         // arrange
-        const query = '{ albums(artistId: 1) { title } }';
+        const query = '{ albums(artistId: 3) { title } }';
 
         // act
-        await request(app)
-            .post('/')
-            .send({ 'query': query })
-            .expect(200)
-            .expect('Content-Type', /json/)
-            .then(response => {
-                // assert
-                const { albums } = response.body.data;
-                expect(albums.length).toBe(2);
+        const response = await TestUtility.testSuccess(app, query);
 
-                // const { forThoseAboutToRock } = albums;
-            })
-            .catch(err => {
-                throw err;
-            });
+        // assert
+        const { albums } = response.body.data;
+        expect(albums.length).toBe(1);
+
+        expect(albums[0].title).toBe('Big Ones');
+    });
+
+    test('artistId: 1500 does not exist, return empty array', async () => {
+        // arrange
+        const query = '{ albums(artistId: 1500) { title } }';
+
+        // act
+        const response = await TestUtility.testSuccess(app, query);
+
+        // assert
+        const { albums } = response.body.data;
+        expect(albums.length).toBe(0);
     });
 });
 
@@ -45,20 +49,12 @@ describe('get album by albumId', () => {
         const query = '{ album(albumId: 1) { title, artistId } }';
 
         // act
-        await request(app)
-            .post('/')
-            .send({ 'query': query })
-            .expect(200)
-            .expect('Content-Type', /json/)
-            .then(response => {
-                // assert
-                const { album } = response.body.data;
-                expect(album.title).toBe('For Those About To Rock We Salute You');
-                expect(album.artistId).toBe(1);
-            })
-            .catch(err => {
-                throw err;
-            });
+        const response = await TestUtility.testSuccess(app, query);
+
+        // assert
+        const { album } = response.body.data;
+        expect(album.title).toBe('For Those About To Rock We Salute You');
+        expect(album.artistId).toBe(1);
     });
 
     test('albumId: 3 is Accept - Restless and Wild', async () => {
@@ -66,20 +62,12 @@ describe('get album by albumId', () => {
         const query = '{ album(albumId: 3) { title, artistId } }';
 
         // act
-        await request(app)
-            .post('/')
-            .send({ 'query': query })
-            .expect(200)
-            .expect('Content-Type', /json/)
-            .then(response => {
-                // assert
-                const { album } = response.body.data;
-                expect(album.title).toBe('Restless and Wild');
-                expect(album.artistId).toBe(2);
-            })
-            .catch(err => {
-                throw err;
-            });
+        const response = await TestUtility.testSuccess(app, query);
+
+        // assert
+        const { album } = response.body.data;
+        expect(album.title).toBe('Restless and Wild');
+        expect(album.artistId).toBe(2);
     });
 
     test('albumId: 2500 does not exist, returns null', async () => {
@@ -87,18 +75,10 @@ describe('get album by albumId', () => {
         const query = '{ album(albumId: 2500) { title } }';
 
         // act
-        await request(app)
-            .post('/')
-            .send({ 'query': query })
-            .expect(200)
-            .expect('Content-Type', /json/)
-            .then(response => {
-                // assert
-                const { album } = response.body.data;
-                expect(album).toBeNull();
-            })
-            .catch(err => {
-                throw err;
-            });
+        const response = await TestUtility.testSuccess(app, query);
+
+        // assert
+        const { album } = response.body.data;
+        expect(album).toBeNull();
     });
 });
