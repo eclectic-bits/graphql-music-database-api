@@ -8,7 +8,7 @@ import { SqliteMediaTypeService } from '../services';
 export class MediaTypeResolver {
     constructor(private readonly mediaTypeService: MediaTypeService = new SqliteMediaTypeService()) {}
 
-    @Query(returns => MediaType)
+    @Query(returns => MediaType, { 'nullable': true })
     public async mediaType(@Arg('mediaTypeId') mediaTypeId: number): Promise<MediaType | undefined> {
         return this.mediaTypeService.getMediaType(mediaTypeId);
     }
