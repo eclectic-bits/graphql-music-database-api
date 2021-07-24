@@ -8,7 +8,7 @@ import { SqliteGenreService } from '../services';
 export class GenreResolver {
     constructor(private readonly genreService: GenreService = new SqliteGenreService()) { }
 
-    @Query(returns => Genre)
+    @Query(returns => Genre, { 'nullable': true })
     public async genre(@Arg('genreId') genreId: number): Promise<Genre|undefined> {
         return this.genreService.getGenre(genreId);
     }
