@@ -5,8 +5,8 @@ import { TestUtility } from '../testUtility';
 import { server } from '../../src/server';
 import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
 import { AlbumResolver } from '../../src/resolvers';
-import { Album, Artist } from '../../src/entities';
-import { ArtistService } from '../../src/interfaces';
+import { Album, Artist, Track } from '../../src/entities';
+import { ArtistService, TrackService } from '../../src/interfaces';
 
 jest.mock('../../src/interfaces/artistService');
 
@@ -103,7 +103,7 @@ describe('get album artist by field resolver', () => {
         expect(album.artist.name).toBe('AC/DC');
     });
 
-    test('no artist tied to album', async () => {
+    test('no artist associated with album', async () => {
         // arrange
         class TestArtistService implements ArtistService {
             public getArtist = async (artistId: number): Promise<Artist | undefined> => {
@@ -116,6 +116,7 @@ describe('get album artist by field resolver', () => {
         }
 
         const resolver = new AlbumResolver(new TestArtistService(), undefined, undefined);
+
         const album = new Album();
         album.id = 1;
         album.artistId = 1;
@@ -128,5 +129,19 @@ describe('get album artist by field resolver', () => {
             // assert
             expect(exception.message).toBe(`An artist wasn't associated with albumId: ${ album.id }`);
         }
+    });
+});
+
+describe('get album tracks by field resolver', () => {
+    test('albumId: 1 is AC/DC - For Those About To Rock We Salute You, 10 tracks returned', async() => {
+        // arrange
+        const query = '{ album(albumId: 1) { tracks { id, name } } }';
+
+        // act
+        const response = await TestUtility.testSuccess(app, query);
+
+        // assert
+        const { album } = response.body.data;
+        expect(album.tracks.length).toBe(10);
     });
 });
