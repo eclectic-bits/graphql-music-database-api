@@ -8,7 +8,7 @@ import { SqlitePlaylistService } from '../services';
 export class PlaylistResolver {
     constructor(private readonly playlistService: PlaylistService = new SqlitePlaylistService()) { }
 
-    @Query(returns => Playlist)
+    @Query(returns => Playlist, { 'nullable': true })
     public async playlist(@Arg('playlistId') playlistId: number): Promise<Playlist | undefined> {
         return this.playlistService.getPlaylist(playlistId);
     }
