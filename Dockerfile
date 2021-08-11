@@ -1,7 +1,7 @@
 # ----------
 # BUILD/TEST IMAGE
 # ----------
-FROM node:12.18.4-alpine as build
+FROM node:12.22-alpine as build
 
 # configure environment
 WORKDIR /app
@@ -25,7 +25,7 @@ RUN npm run build
 # ----------
 # PRODUCTION IMAGE
 # ----------
-FROM node:12.18.4-alpine
+FROM node:12.22-alpine
 
 # configure environment
 WORKDIR /app

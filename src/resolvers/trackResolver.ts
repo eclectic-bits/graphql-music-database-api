@@ -7,12 +7,12 @@ import { SqliteAlbumService, SqliteGenreService, SqliteMediaTypeService, SqliteT
 @Resolver(Track)
 export class TrackResolver implements ResolverInterface<Track> {
     constructor(private readonly trackService: TrackService = new SqliteTrackService(),
-        private readonly albumService: AlbumService = new SqliteAlbumService(),
-        private readonly genreService: GenreService = new SqliteGenreService(),
-        private readonly mediaTypeService: MediaTypeService = new SqliteMediaTypeService()) { }
+                private readonly albumService: AlbumService = new SqliteAlbumService(),
+                private readonly genreService: GenreService = new SqliteGenreService(),
+                private readonly mediaTypeService: MediaTypeService = new SqliteMediaTypeService()) { }
 
-    @Query(returns => Track)
-    public async track(@Arg('trackId') trackId: number): Promise<Track|undefined> {
+    @Query(returns => Track, { 'nullable': true })
+    public async track(@Arg('trackId') trackId: number): Promise<Track | undefined> {
         return this.trackService.getTrack(trackId);
     }
 

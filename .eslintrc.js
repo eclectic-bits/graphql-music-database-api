@@ -94,7 +94,7 @@ const stylisticRules = {
     'func-call-spacing': [ 'error', 'never' ],
 
     // https://eslint.org/docs/rules/function-call-argument-newline
-    'function-call-argument-newline': [ 'error', 'never' ],
+    'function-call-argument-newline': [ 'error', 'consistent' ],
 
     // https://eslint.org/docs/rules/function-paren-newline
     'function-paren-newline': [ 'error', 'never' ],
@@ -103,7 +103,15 @@ const stylisticRules = {
     'implicit-arrow-linebreak': [ 'error', 'beside' ],
 
     // https://eslint.org/docs/rules/indent
-    'indent': [ 'error', 4, { 'MemberExpression': 1 } ],
+    'indent': [
+        'error',
+        4,
+        {
+            'MemberExpression': 1,
+            'FunctionExpression': { 'parameters': 'first' },
+            'CallExpression': { 'arguments': 'first' }
+        }
+    ],
 
     // https://eslint.org/docs/rules/key-spacing
     'key-spacing': [
@@ -402,7 +410,15 @@ const typescriptEslintExtensionRules = {
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
     'indent': 'off',
-    '@typescript-eslint/indent': [ 'error', 4, { 'MemberExpression': 1 } ],
+    '@typescript-eslint/indent': [
+        'error',
+        4,
+        {
+            'MemberExpression': 1,
+            'FunctionExpression': { 'parameters': 'first' },
+            'CallExpression': { 'arguments': 'first' }
+        }
+    ],
 
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/keyword-spacing.md
     'keyword-spacing': 'off',

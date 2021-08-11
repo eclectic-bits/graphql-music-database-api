@@ -7,10 +7,10 @@ import { SqliteAlbumService, SqliteArtistService, SqliteTrackService } from '../
 @Resolver(Album)
 export class AlbumResolver implements ResolverInterface<Album> {
     constructor(private readonly artistService: ArtistService = new SqliteArtistService(),
-        private readonly albumService: AlbumService = new SqliteAlbumService(),
-        private readonly trackService: TrackService = new SqliteTrackService()) { }
+                private readonly albumService: AlbumService = new SqliteAlbumService(),
+                private readonly trackService: TrackService = new SqliteTrackService()) { }
 
-    @Query(returns => Album)
+    @Query(returns => Album, { 'nullable': true })
     public async album(@Arg('albumId') albumId: number): Promise<Album|undefined> {
         return this.albumService.getAlbum(albumId);
     }
@@ -24,7 +24,7 @@ export class AlbumResolver implements ResolverInterface<Album> {
     public async artist(@Root() album: Album): Promise<Artist> {
         const artist = await this.artistService.getArtist(album.artistId);
         if (artist === undefined) {
-            throw new Error(`An artist wasn't associated with albumId: ${ album.id }`);
+            throw Error(`An artist wasn't associated with albumId: ${ album.id }`);
         }
 
         return artist;

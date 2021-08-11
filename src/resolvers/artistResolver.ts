@@ -7,14 +7,14 @@ import { SqliteAlbumService, SqliteArtistService } from '../services';
 @Resolver(Artist)
 export class ArtistResolver implements ResolverInterface<Artist> {
     constructor(private readonly artistService: ArtistService = new SqliteArtistService(),
-        private readonly albumService: AlbumService = new SqliteAlbumService()) { }
+                private readonly albumService: AlbumService = new SqliteAlbumService()) { }
 
     @Query(returns => [ Artist ])
     public async artists(): Promise<Artist[]> {
         return this.artistService.getArtists();
     }
 
-    @Query(returns => Artist)
+    @Query(returns => Artist, { 'nullable': true })
     public async artist(@Arg('artistId') artistId: number): Promise<Artist|undefined> {
         return this.artistService.getArtist(artistId);
     }
