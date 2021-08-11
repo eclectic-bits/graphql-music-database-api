@@ -5,10 +5,8 @@ import { TestUtility } from '../testUtility';
 import { server } from '../../src/server';
 import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
 import { AlbumResolver } from '../../src/resolvers';
-import { Album, Artist, Track } from '../../src/entities';
-import { ArtistService, TrackService } from '../../src/interfaces';
-
-jest.mock('../../src/interfaces/artistService');
+import { Album, Artist } from '../../src/entities';
+import { ArtistService } from '../../src/interfaces';
 
 let app: express.Express;
 beforeAll(async () => {
