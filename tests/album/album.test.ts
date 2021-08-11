@@ -1,8 +1,14 @@
 import express from 'express';
 
+import { TestUtility } from '../testUtility';
+
 import { server } from '../../src/server';
 import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
-import { TestUtility } from '../testUtility';
+import { AlbumResolver } from '../../src/resolvers';
+import { Album, Artist } from '../../src/entities';
+import { ArtistService } from '../../src/interfaces';
+
+jest.mock('../../src/interfaces/artistService');
 
 let app: express.Express;
 beforeAll(async () => {
@@ -80,5 +86,47 @@ describe('get album by albumId', () => {
         // assert
         const { album } = response.body.data;
         expect(album).toBeNull();
+    });
+});
+
+describe('get album artist by field resolver', () => {
+    test('albumId: 1 is AC/DC - For Those About To Rock We Salute You', async () => {
+        // arrange
+        const query = '{ album(albumId: 1) { artist { id, name } } }';
+
+        // act
+        const response = await TestUtility.testSuccess(app, query);
+
+        // assert
+        const { album } = response.body.data;
+        expect(album.artist.id).toBe('1');
+        expect(album.artist.name).toBe('AC/DC');
+    });
+
+    test('no artist tied to album', async () => {
+        // arrange
+        class TestArtistService implements ArtistService {
+            public getArtist = async (artistId: number): Promise<Artist | undefined> => {
+                return undefined;
+            };
+
+            public getArtists = async (): Promise<Artist[]> => {
+                return [];
+            };
+        }
+
+        const resolver = new AlbumResolver(new TestArtistService(), undefined, undefined);
+        const album = new Album();
+        album.id = 1;
+        album.artistId = 1;
+        album.title = 'For Those About To Rock We Salute You';
+
+        try {
+            // act
+            await resolver.artist(album);
+        } catch (exception: any) {
+            // assert
+            expect(exception.message).toBe(`An artist wasn't associated with albumId: ${ album.id }`);
+        }
     });
 });

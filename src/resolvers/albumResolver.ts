@@ -24,7 +24,7 @@ export class AlbumResolver implements ResolverInterface<Album> {
     public async artist(@Root() album: Album): Promise<Artist> {
         const artist = await this.artistService.getArtist(album.artistId);
         if (artist === undefined) {
-            throw new Error(`An artist wasn't associated with albumId: ${ album.id }`);
+            throw Error(`An artist wasn't associated with albumId: ${ album.id }`);
         }
 
         return artist;
