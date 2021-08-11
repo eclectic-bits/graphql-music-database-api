@@ -4,7 +4,7 @@ import { TestUtility } from '../testUtility';
 
 import { server } from '../../src/server';
 import { DatabaseContext, GraphqlHttpContext } from '../../src/contexts';
-import { AlbumResolver } from '../../src/resolvers';
+import { AlbumResolverHelper } from '../helpers';
 import { Album, Artist } from '../../src/entities';
 import { ArtistService } from '../../src/interfaces';
 
@@ -109,16 +109,14 @@ describe('get album artist by field resolver', () => {
             };
 
             public getArtists = async (): Promise<Artist[]> => {
-                return [];
+                throw new Error('Method not implemented.');
             };
         }
 
-        const resolver = new AlbumResolver(new TestArtistService(), undefined, undefined);
+        const resolver = AlbumResolverHelper.getAlbumResolver({ 'artistService': new TestArtistService() });
 
         const album = new Album();
         album.id = 1;
-        album.artistId = 1;
-        album.title = 'For Those About To Rock We Salute You';
 
         try {
             // act
