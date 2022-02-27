@@ -56,5 +56,8 @@
     "sqlite3": "^5.0.2",
     "type-graphql": "^1.1.1",
     "typeorm": "^0.2.34"
+  },
+  "volta": {
+    "node": "12.22.3"
   }
 }
