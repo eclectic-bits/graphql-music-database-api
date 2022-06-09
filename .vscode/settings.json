@@ -6,6 +6,17 @@
   "eslint.format.enable": true,
   "eslint.validate": ["typescript", "javascript"],
 
+  // jest
+  "jest.autoRun": {
+    "watch": true,
+    "onSave": "test-file",
+    "onStartup": ["all-tests"]
+  },
+  "jest.debugMode": false,
+  "jest.enableCodeLens": true,
+  "jest.showCoverageOnLoad": true,
+  "jest.showTerminalOnLaunch": false,
+
   // code formatting
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -23,5 +34,14 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
-  }
+  },
+
+  // hiding files from vscode search
+  "search.exclude": {
+    // filters out node modules from search in this project
+    "**/node_modules": true
+  },
+
+  // point vscode to the locally installed version of typescript
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }

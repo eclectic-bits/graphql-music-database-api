@@ -509,7 +509,7 @@ module.exports = {
         // Allows for the use of imports
         'sourceType': 'module',
 
-        'project': './tsconfig.eslint.json'
+        'project': './tsconfig.json'
     },
 
     'plugins': [ '@typescript-eslint' ],

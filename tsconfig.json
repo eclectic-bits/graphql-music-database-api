@@ -9,5 +9,5 @@
     "strictPropertyInitialization": false,
     "lib": ["es2018", "esnext.asynciterable"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "tests/**/*", ".eslintrc.js", "jest.config.ts"]
 }
