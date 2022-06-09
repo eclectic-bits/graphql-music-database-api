@@ -1,11 +1,15 @@
 # ----------
-# BUILD/TEST IMAGE
+# BASE IMAGE
 # ----------
-FROM node:12.22-alpine as build
-
-# configure environment
+FROM node:16.15.1-alpine AS base
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
+
+
+# ----------
+# BUILD/TEST IMAGE
+# ----------
+FROM base AS build
 
 # copy code, install all dependencies
 COPY package*.json ./
@@ -25,7 +29,7 @@ RUN npm run build
 # ----------
 # PRODUCTION IMAGE
 # ----------
-FROM node:12.22-alpine
+FROM base AS production
 
 # configure environment
 WORKDIR /app

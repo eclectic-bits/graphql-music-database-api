@@ -8,9 +8,9 @@
 !.eslintrc.js
 
 !tsconfig.json
-!tsconfig.eslint.json
+!tsconfig.prod.json
 
-!jest.json
+!jest.config.ts
 
 # allowed folders
 !src
