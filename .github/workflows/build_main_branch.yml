@@ -1,11 +1,12 @@
-name: Pull request checks
+name: Build when code is checked into main.
 
 on:
-  pull_request:
-    types: [edited, opened, reopened, synchronize]
+  push:
+    branches:
+      - "main"
 
 jobs:
-  verify_project_before_pull_request:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +30,8 @@ jobs:
 
       - name: Run - Typescript Compiler
         run: npm run build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
