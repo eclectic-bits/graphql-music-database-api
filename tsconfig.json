@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node12/tsconfig.json",
+  "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
     "target": "es2018",
     "module": "commonjs",
@@ -9,5 +9,5 @@
     "strictPropertyInitialization": false,
     "lib": ["es2018", "esnext.asynciterable"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "tests/**/*", ".eslintrc.js", "jest.config.ts"]
 }

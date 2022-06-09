@@ -1,8 +1,8 @@
 {
   "recommendations": [
+    "streetsidesoftware.code-spell-checker",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "wayou.vscode-todo-highlight",
-    "alexcvzz.vscode-sqlite"
+    "Orta.vscode-jest"
   ]
 }

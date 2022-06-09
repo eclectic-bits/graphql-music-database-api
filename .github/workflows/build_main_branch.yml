@@ -1,0 +1,37 @@
+name: Build when code is checked into main.
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJS with volta
+        uses: volta-cli/action@v1
+
+      - name: List NodeJs version
+        run: node --version
+
+      - name: Install dependencies
+        run: npm clean-install
+
+      - name: Run - Linter
+        run: npm run lint
+
+      - name: Run - Unit Tests
+        run: npm run test
+
+      - name: Run - Typescript Compiler
+        run: npm run build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
