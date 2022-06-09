@@ -499,7 +499,9 @@ module.exports = {
         'jest': true
     },
 
-    // Specifies the ESLint parser
+    /**
+     * Parsers
+     */
     'parser': '@typescript-eslint/parser',
 
     /**
@@ -512,6 +514,9 @@ module.exports = {
         'project': './tsconfig.json'
     },
 
+    /**
+     * Plugins
+     */
     'plugins': [ '@typescript-eslint' ],
 
     /**
@@ -522,6 +527,9 @@ module.exports = {
         'eslint:recommended'
     ],
 
+    /**
+     * Rules
+     */
     'rules': {
         ...possibleErrorRules,
         ...bestPracticeRules,
@@ -530,6 +538,9 @@ module.exports = {
         ...ecmaScriptRules
     },
 
+    /**
+     * Rule Overrides
+     */
     'overrides': [
         {
             // enable the rule specifically for TypeScript files
